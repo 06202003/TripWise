@@ -46,9 +46,9 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="400.0" prefWidth="400.0">
                            <children>
-                              <ImageView fitHeight="160.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="267.0" fitWidth="266.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/zyro-image-removebg-preview.png" />
+                                    <Image url="@img/pesawat.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -219,9 +219,9 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="400.0" prefWidth="400.0">
                            <children>
-                              <ImageView fitHeight="160.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="285.0" fitWidth="334.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/zyro-image-removebg-preview.png" />
+                                    <Image url="@img/hotel.jpg" />
                                  </image>
                               </ImageView>
                            </children>
@@ -559,9 +559,9 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="400.0" prefWidth="400.0">
                            <children>
-                              <ImageView fitHeight="160.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="302.0" fitWidth="371.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/zyro-image-removebg-preview.png" />
+                                    <Image url="@img/train.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -735,41 +735,41 @@
                            <children>
                               <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="29.0" prefHeight="276.0" prefWidth="763.0">
                                  <children>
-                                    <ImageView fitHeight="128.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                                        <HBox.margin>
                                           <Insets left="10.0" right="10.0" />
                                        </HBox.margin>
                                        <image>
-                                          <Image url="@../../../../../../../../Documents/Semafit/Nobo_1.png" />
+                                          <Image url="@img/event.jpg" />
                                        </image>
                                     </ImageView>
-                                    <ImageView fitHeight="128.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../../../../../../Documents/Semafit/Noli_Wave_1.png" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets left="10.0" right="10.0" />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="128.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../../../../../../../Documents/Semafit/Nobo_1.png" />
+                                          <Image url="@img/event.jpg" />
                                        </image>
                                        <HBox.margin>
                                           <Insets left="10.0" right="10.0" />
                                        </HBox.margin>
                                     </ImageView>
-                                    <ImageView fitHeight="128.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../../../../../../Documents/Semafit/Noli_Wave_1.png" />
+                                          <Image url="@img/event.jpg" />
                                        </image>
                                        <HBox.margin>
                                           <Insets left="10.0" right="10.0" />
                                        </HBox.margin>
                                     </ImageView>
-                                    <ImageView fitHeight="128.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../../../../../../Documents/Semafit/Nobo_1.png" />
+                                          <Image url="@img/event.jpg" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets left="10.0" right="10.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@img/event.jpg" />
                                        </image>
                                     </ImageView>
                                  </children>
