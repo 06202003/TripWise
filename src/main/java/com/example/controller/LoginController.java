@@ -1,8 +1,6 @@
 package com.example.controller;
-import com.example.demo.HelloApplication;
 import com.example.entity.User;
 import com.example.auth.LoginService;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -47,7 +45,7 @@ public class LoginController {
             System.out.println("Selamat datang, " + user.getNama() + "!");
 
                 try {
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/demo/pesantiket.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/demo/home.fxml"));
                     Parent dashboardRoot = fxmlLoader.load();
                     PesanTiketController dashboardController = fxmlLoader.getController();
 
