@@ -1,0 +1,785 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.PesanTiketController">
+   <tabs>
+      <Tab text="Pesawat">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
+               <children>
+                  <TextFlow prefHeight="134.0" prefWidth="800.0" textAlignment="CENTER">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="222.0" prefWidth="800.0" style="-fx-background-color: lightblue;">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pemesanan Tiket Pesawat" textAlignment="CENTER" wrappingWidth="705.6070528030396">
+                                 <font>
+                                    <Font size="39.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Terbanglah Menggapai Impianmu!" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
+                     </children>
+                  </TextFlow>
+                  <HBox layoutY="220.0" prefHeight="351.0" prefWidth="800.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="400.0" prefWidth="400.0">
+                           <children>
+                              <ImageView fitHeight="267.0" fitWidth="266.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/pesawat.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER_LEFT" prefHeight="370.0" prefWidth="466.0">
+                           <children>
+                              <TextFlow prefHeight="0.0" prefWidth="394.0" textAlignment="CENTER">
+                                 <children>
+                                    <HBox prefHeight="20.0" prefWidth="480.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Origin" wrappingWidth="165.6070556640625">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Destination" wrappingWidth="209.6070556640625">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="35.0" />
+                                             </HBox.margin>
+                                          </Text>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                              </TextFlow>
+                              <HBox prefHeight="26.0" prefWidth="400.0">
+                                 <children>
+                                    <ComboBox fx:id="originComboBox1" prefHeight="26.0" prefWidth="163.0" promptText="Jakarta">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </ComboBox>
+                                    <ComboBox fx:id="destinationComboBox1" prefHeight="26.0" prefWidth="175.0" promptText="Bali">
+                                       <HBox.margin>
+                                          <Insets left="20.0" right="20.0" />
+                                       </HBox.margin>
+                                    </ComboBox>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="40.0" prefWidth="509.0">
+                                 <children>
+                                    <HBox prefHeight="26.0" prefWidth="400.0">
+                                       <children>
+                                          <HBox prefHeight="30.0" prefWidth="386.0">
+                                             <children>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="361.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Departure" wrappingWidth="81.41387557983398">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <DatePicker prefHeight="26.0" prefWidth="162.0" promptText="Choose Date" />
+                                                      <CheckBox alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="21.0">
+                                                         <padding>
+                                                            <Insets left="20.0" />
+                                                         </padding>
+                                                      </CheckBox>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Return" wrappingWidth="54.213924407958984">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets left="10.0" />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </HBox>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets top="10.0" />
+                                       </HBox.margin>
+                                    </HBox>
+                                 </children>
+                              </HBox>
+                              <TextFlow prefHeight="0.0" prefWidth="394.0" textAlignment="CENTER">
+                                 <children>
+                                    <HBox prefHeight="20.0" prefWidth="480.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adult" wrappingWidth="165.6070556640625">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Infant" wrappingWidth="209.6070556640625">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="35.0" />
+                                             </HBox.margin>
+                                          </Text>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </TextFlow>
+                              <HBox prefHeight="26.0" prefWidth="400.0">
+                                 <children>
+                                    <TextField prefHeight="26.0" prefWidth="162.0">
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                    <TextField prefHeight="26.0" prefWidth="177.0">
+                                       <HBox.margin>
+                                          <Insets left="20.0" right="20.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="26.0" prefWidth="400.0">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <children>
+                                    <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="381.0" text="Search Ticket" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children></AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Hotel">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TextFlow prefHeight="206.0" prefWidth="800.0" textAlignment="CENTER">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="222.0" prefWidth="800.0" style="-fx-background-color: lightyellow;">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pemesanan Hotel" textAlignment="CENTER" wrappingWidth="560.8070068359375">
+                                 <font>
+                                    <Font size="39.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kenyamanan Terbaik, Harga Terjangkau." textAlignment="CENTER">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
+                     </children>
+                  </TextFlow>
+                  <HBox layoutY="227.0" prefHeight="350.0" prefWidth="800.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="400.0" prefWidth="400.0">
+                           <children>
+                              <ImageView fitHeight="285.0" fitWidth="334.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/hotel.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER_LEFT" prefHeight="206.0" prefWidth="418.0">
+                           <children>
+                              <TextFlow prefHeight="0.0" prefWidth="394.0" textAlignment="CENTER">
+                                 <children>
+                                    <HBox prefHeight="20.0" prefWidth="480.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="City, destination, or hotel name" wrappingWidth="222.40704345703125">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                              </TextFlow>
+                              <HBox prefHeight="26.0" prefWidth="381.0">
+                                 <children>
+                                    <ComboBox fx:id="hotelComboBox" prefHeight="26.0" prefWidth="378.0" promptText="The Trans Luxury Hotel">
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </ComboBox>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="40.0" prefWidth="509.0">
+                                 <children>
+                                    <HBox prefHeight="26.0" prefWidth="400.0">
+                                       <HBox.margin>
+                                          <Insets top="10.0" />
+                                       </HBox.margin>
+                                       <children>
+                                          <HBox prefHeight="30.0" prefWidth="402.0">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                             <children>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="390.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Check-in" wrappingWidth="67.01385116577148">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                      <DatePicker prefHeight="26.0" prefWidth="108.0" promptText="Choose Date" />
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Check-out" wrappingWidth="67.01385116577148">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets left="15.0" />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                      <DatePicker prefHeight="26.0" prefWidth="116.0" promptText="Choose Date" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </HBox>
+                              <TextFlow prefHeight="0.0" prefWidth="394.0" textAlignment="CENTER">
+                                 <children>
+                                    <HBox prefHeight="20.0" prefWidth="480.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adult" wrappingWidth="103.20697021484375">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Infant" wrappingWidth="122.40703558921814">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="35.0" />
+                                             </HBox.margin>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Room" wrappingWidth="209.6070556640625">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </TextFlow>
+                              <HBox prefHeight="26.0" prefWidth="400.0">
+                                 <children>
+                                    <TextField prefHeight="26.0" prefWidth="100.0">
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                    <TextField prefHeight="26.0" prefWidth="100.0">
+                                       <HBox.margin>
+                                          <Insets left="20.0" right="20.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                    <TextField prefHeight="26.0" prefWidth="100.0" />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="26.0" prefWidth="400.0">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <children>
+                                    <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="381.0" text="Search Hotel" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children></AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Kereta Api">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
+               <children>
+                  <TextFlow prefHeight="84.0" prefWidth="600.0" textAlignment="CENTER">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="134.0" prefWidth="607.0" style="-fx-background-color: lightblue;">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pemesanan Tiket Pesawat" textAlignment="CENTER" wrappingWidth="560.8070068359375">
+                                 <font>
+                                    <Font size="39.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Terbanglah Menggapai Impianmu!" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
+                     </children>
+                  </TextFlow>
+                  <HBox layoutY="147.0" prefHeight="225.0" prefWidth="600.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="206.0" prefWidth="218.0">
+                           <children>
+                              <ImageView fitHeight="160.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../Downloads/zyro-image-removebg-preview.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" prefHeight="206.0" prefWidth="418.0">
+                           <children>
+                              <TextFlow prefHeight="0.0" prefWidth="394.0" textAlignment="CENTER">
+                                 <children>
+                                    <HBox prefHeight="20.0" prefWidth="480.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Origin" wrappingWidth="165.6070556640625">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Destination" wrappingWidth="209.6070556640625">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="35.0" />
+                                             </HBox.margin>
+                                          </Text>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                              </TextFlow>
+                              <HBox prefHeight="26.0" prefWidth="400.0">
+                                 <children>
+                                    <!-- ComboBox for Origin -->
+                                    <HBox spacing="10">
+                                       <ComboBox fx:id="originComboBox2" prefHeight="26.0" prefWidth="163.0">
+                                          <opaqueInsets>
+                                             <Insets />
+                                          </opaqueInsets>
+                                       </ComboBox>
+                                    </HBox>
+
+                                    <!-- ComboBox for Destination -->
+                                    <HBox spacing="10" AnchorPane.topAnchor="50">
+                                       <ComboBox fx:id="destinationComboBox2" prefHeight="26.0" prefWidth="175.0">
+                                          <HBox.margin>
+                                             <Insets left="20.0" right="20.0" />
+                                          </HBox.margin>
+                                       </ComboBox>
+                                    </HBox>
+
+
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="40.0" prefWidth="509.0">
+                                 <children>
+                                    <HBox prefHeight="26.0" prefWidth="400.0">
+                                       <HBox.margin>
+                                          <Insets top="10.0" />
+                                       </HBox.margin>
+                                       <children>
+                                          <HBox prefHeight="30.0" prefWidth="386.0">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                             <children>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="361.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Departure" wrappingWidth="81.41387557983398">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <DatePicker prefHeight="26.0" prefWidth="162.0" promptText="Choose Date" />
+                                                      <CheckBox alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="21.0">
+                                                         <padding>
+                                                            <Insets left="20.0" />
+                                                         </padding>
+                                                      </CheckBox>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Return" wrappingWidth="54.213924407958984">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets left="10.0" />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </HBox>
+                              <TextFlow prefHeight="0.0" prefWidth="394.0" textAlignment="CENTER">
+                                 <children>
+                                    <HBox prefHeight="20.0" prefWidth="480.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adult" wrappingWidth="165.6070556640625">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Infant" wrappingWidth="209.6070556640625">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="35.0" />
+                                             </HBox.margin>
+                                          </Text>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </TextFlow>
+                              <HBox prefHeight="26.0" prefWidth="400.0">
+                                 <children>
+                                    <TextField prefHeight="26.0" prefWidth="162.0">
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                    <TextField prefHeight="26.0" prefWidth="177.0">
+                                       <HBox.margin>
+                                          <Insets left="20.0" right="20.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="26.0" prefWidth="400.0">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <children>
+                                    <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="381.0" text="Search Ticket" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </content>
+         <content>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <TextFlow prefHeight="209.0" prefWidth="800.0" textAlignment="CENTER">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="222.0" prefWidth="800.0" style="-fx-background-color: lightgreen;">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pemesanan Tiket Kereta Api" textAlignment="CENTER" wrappingWidth="560.8070068359375">
+                                 <font>
+                                    <Font size="39.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Satu Klik Saja, Tiket Kereta Siap Jalan!" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
+                     </children>
+                  </TextFlow>
+                  <HBox layoutY="222.0" prefHeight="350.0" prefWidth="800.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="400.0" prefWidth="400.0">
+                           <children>
+                              <ImageView fitHeight="302.0" fitWidth="371.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/train.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER_LEFT" prefHeight="383.0" prefWidth="411.0">
+                           <children>
+                              <TextFlow prefHeight="0.0" prefWidth="394.0" textAlignment="CENTER">
+                                 <children>
+                                    <HBox prefHeight="20.0" prefWidth="480.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Origin" wrappingWidth="165.6070556640625">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Destination" wrappingWidth="209.6070556640625">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="35.0" />
+                                             </HBox.margin>
+                                          </Text>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                              </TextFlow>
+                              <HBox prefHeight="26.0" prefWidth="400.0">
+                                 <children>
+                                    <ComboBox fx:id="originComboBox2" prefHeight="26.0" prefWidth="163.0" promptText="Yogyakarta">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </ComboBox>
+                                    <ComboBox fx:id="destinationComboBox2" prefHeight="26.0" prefWidth="175.0" promptText="Bandung">
+                                       <HBox.margin>
+                                          <Insets left="20.0" right="20.0" />
+                                       </HBox.margin>
+                                    </ComboBox>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="40.0" prefWidth="509.0">
+                                 <children>
+                                    <HBox prefHeight="26.0" prefWidth="400.0">
+                                       <HBox.margin>
+                                          <Insets top="10.0" />
+                                       </HBox.margin>
+                                       <children>
+                                          <HBox prefHeight="30.0" prefWidth="386.0">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                             <children>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="361.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Departure" wrappingWidth="81.41387557983398">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <DatePicker prefHeight="26.0" prefWidth="162.0" promptText="Choose Date" />
+                                                      <CheckBox alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="21.0">
+                                                         <padding>
+                                                            <Insets left="20.0" />
+                                                         </padding>
+                                                      </CheckBox>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Return" wrappingWidth="54.213924407958984">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets left="10.0" />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </HBox>
+                              <TextFlow prefHeight="0.0" prefWidth="394.0" textAlignment="CENTER">
+                                 <children>
+                                    <HBox prefHeight="20.0" prefWidth="480.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adult" wrappingWidth="165.6070556640625">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Infant" wrappingWidth="209.6070556640625">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="35.0" />
+                                             </HBox.margin>
+                                          </Text>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </TextFlow>
+                              <HBox prefHeight="26.0" prefWidth="400.0">
+                                 <children>
+                                    <TextField prefHeight="26.0" prefWidth="162.0">
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                    <TextField prefHeight="26.0" prefWidth="177.0">
+                                       <HBox.margin>
+                                          <Insets left="20.0" right="20.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="26.0" prefWidth="400.0">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <children>
+                                    <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="381.0" text="Search Ticket" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Event">
+         <content>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <TextFlow prefHeight="134.0" prefWidth="800.0" textAlignment="CENTER">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="222.0" prefWidth="800.0" style="-fx-background-color: pink;">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Event" textAlignment="CENTER" wrappingWidth="560.8070068359375">
+                                 <font>
+                                    <Font size="39.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mewujudkan Momen Tak Terlupakan, berlibur bersama kami." textAlignment="CENTER">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
+                     </children>
+                  </TextFlow>
+                  <ScrollPane layoutY="222.0" prefHeight="350.0" prefWidth="800.0">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="334.0" prefWidth="798.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="29.0" prefHeight="276.0" prefWidth="763.0">
+                                 <children>
+                                    <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets left="10.0" right="10.0" />
+                                       </HBox.margin>
+                                       <image>
+                                          <Image url="@img/event.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@img/event.jpg" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets left="10.0" right="10.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@img/event.jpg" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets left="10.0" right="10.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@img/event.jpg" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets left="10.0" right="10.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <ImageView fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@img/event.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
+               </children></AnchorPane>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>

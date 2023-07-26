@@ -20,12 +20,12 @@
                   <Font size="36.0" />
                </font>
             </Text>
-            <ImageView fitHeight="160.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="256.0" fitWidth="255.0" pickOnBounds="true" preserveRatio="true">
                <VBox.margin>
                   <Insets bottom="30.0" />
                </VBox.margin>
                <image>
-                  <Image url="@../../../../../../../../Downloads/NOBO%20WAVE@4x.png" />
+                  <Image url="@img/logo.png" />
                </image>
             </ImageView>
               <TextField fx:id="usernameField" prefHeight="26.0" prefWidth="457.0" promptText="Username">
@@ -39,7 +39,7 @@
                </VBox.margin>
             </PasswordField>
 
-              <Button fx:id="loginButton" onAction="#handleLoginButtonAction"  mnemonicParsing="false" prefHeight="26.0" prefWidth="321.0" text="Login" />
+              <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLoginButtonAction" prefHeight="26.0" prefWidth="321.0" text="Login" />
          </children>
       </VBox>
     </children>
