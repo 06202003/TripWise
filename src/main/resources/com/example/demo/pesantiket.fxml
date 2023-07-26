@@ -18,11 +18,11 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
-  <tabs>
-    <Tab text="Pesawat">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.PesanTiketController">
+   <tabs>
+      <Tab text="Pesawat">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
                <children>
                   <TextFlow prefHeight="134.0" prefWidth="800.0" textAlignment="CENTER">
                      <children>
@@ -81,7 +81,7 @@
                               </TextFlow>
                               <HBox prefHeight="26.0" prefWidth="400.0">
                                  <children>
-                                    <ComboBox prefHeight="26.0" prefWidth="163.0">
+                                    <ComboBox fx:id="originComboBox1" prefHeight="26.0" prefWidth="163.0" promptText="Jakarta">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
@@ -89,7 +89,7 @@
                                           <Insets right="20.0" />
                                        </HBox.margin>
                                     </ComboBox>
-                                    <ComboBox prefHeight="26.0" prefWidth="175.0">
+                                    <ComboBox fx:id="destinationComboBox1" prefHeight="26.0" prefWidth="175.0" promptText="Bali">
                                        <HBox.margin>
                                           <Insets left="20.0" right="20.0" />
                                        </HBox.margin>
@@ -191,8 +191,8 @@
                      </children>
                   </HBox>
                </children></AnchorPane>
-      </content>
-    </Tab>
+         </content>
+      </Tab>
       <Tab text="Hotel">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -244,9 +244,13 @@
                                     </HBox>
                                  </children>
                               </TextFlow>
-                              <HBox prefHeight="26.0" prefWidth="400.0">
+                              <HBox prefHeight="26.0" prefWidth="381.0">
                                  <children>
-                                    <TextField prefHeight="26.0" prefWidth="382.0" />
+                                    <ComboBox fx:id="hotelComboBox" prefHeight="26.0" prefWidth="378.0" promptText="The Trans Luxury Hotel">
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </ComboBox>
                                  </children>
                               </HBox>
                               <HBox prefHeight="40.0" prefWidth="509.0">
@@ -412,19 +416,25 @@
                               </TextFlow>
                               <HBox prefHeight="26.0" prefWidth="400.0">
                                  <children>
-                                    <ComboBox prefHeight="26.0" prefWidth="163.0">
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <HBox.margin>
-                                          <Insets right="20.0" />
-                                       </HBox.margin>
-                                    </ComboBox>
-                                    <ComboBox prefHeight="26.0" prefWidth="175.0">
-                                       <HBox.margin>
-                                          <Insets left="20.0" right="20.0" />
-                                       </HBox.margin>
-                                    </ComboBox>
+                                    <!-- ComboBox for Origin -->
+                                    <HBox spacing="10">
+                                       <ComboBox fx:id="originComboBox2" prefHeight="26.0" prefWidth="163.0">
+                                          <opaqueInsets>
+                                             <Insets />
+                                          </opaqueInsets>
+                                       </ComboBox>
+                                    </HBox>
+
+                                    <!-- ComboBox for Destination -->
+                                    <HBox spacing="10" AnchorPane.topAnchor="50">
+                                       <ComboBox fx:id="destinationComboBox2" prefHeight="26.0" prefWidth="175.0">
+                                          <HBox.margin>
+                                             <Insets left="20.0" right="20.0" />
+                                          </HBox.margin>
+                                       </ComboBox>
+                                    </HBox>
+
+
                                  </children>
                               </HBox>
                               <HBox prefHeight="40.0" prefWidth="509.0">
@@ -584,7 +594,7 @@
                               </TextFlow>
                               <HBox prefHeight="26.0" prefWidth="400.0">
                                  <children>
-                                    <ComboBox prefHeight="26.0" prefWidth="163.0">
+                                    <ComboBox fx:id="originComboBox2" prefHeight="26.0" prefWidth="163.0" promptText="Yogyakarta">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
@@ -592,7 +602,7 @@
                                           <Insets right="20.0" />
                                        </HBox.margin>
                                     </ComboBox>
-                                    <ComboBox prefHeight="26.0" prefWidth="175.0">
+                                    <ComboBox fx:id="destinationComboBox2" prefHeight="26.0" prefWidth="175.0" promptText="Bandung">
                                        <HBox.margin>
                                           <Insets left="20.0" right="20.0" />
                                        </HBox.margin>
@@ -720,8 +730,8 @@
                      </children>
                   </TextFlow>
                   <ScrollPane layoutY="222.0" prefHeight="350.0" prefWidth="800.0">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="334.0" prefWidth="798.0">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="334.0" prefWidth="798.0">
                            <children>
                               <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="29.0" prefHeight="276.0" prefWidth="763.0">
                                  <children>
@@ -766,10 +776,10 @@
                               </HBox>
                            </children>
                         </AnchorPane>
-                    </content>
+                     </content>
                   </ScrollPane>
                </children></AnchorPane>
          </content>
       </Tab>
-  </tabs>
+   </tabs>
 </TabPane>
