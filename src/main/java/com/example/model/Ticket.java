@@ -6,10 +6,12 @@ public class Ticket {
     private int id;
     private String name;
     private int NIK;
-    private int PNR; //kode booking
+    private int PNR; // kode booking
     private String orderDate;
+//    pindahin ke user
     private String contact;
     private String address;
+//  end pindahin ke user
     private String price;
     private String departure;
     private String arrival;
