@@ -1,15 +1,15 @@
 package com.example.model;
 
-import java.util.Date;
+import java.util.List;
 
 public class Train {
     private int id;
-    private String station;
+    private List<String> routeStations;
     private int noTrain;
 
-    public Train(int id, String station, int noTrain) {
+    public Train(int id, List<String> routeStations, int noTrain) {
         this.id = id;
-        this.station = station;
+        this.routeStations = routeStations;
         this.noTrain = noTrain;
     }
 
@@ -21,12 +21,12 @@ public class Train {
         this.id = id;
     }
 
-    public String getStation() {
-        return station;
+    public List<String> getRouteStations() {
+        return routeStations;
     }
 
-    public void setStation(String station) {
-        this.station = station;
+    public void setRouteStations(List<String> routeStations) {
+        this.routeStations = routeStations;
     }
 
     public int getNoTrain() {
@@ -35,5 +35,14 @@ public class Train {
 
     public void setNoTrain(int noTrain) {
         this.noTrain = noTrain;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Train ID: ").append(id).append("\n");
+        sb.append("Route Stations: ").append(routeStations).append("\n");
+        sb.append("Train Number: ").append(noTrain).append("\n");
+        return sb.toString();
     }
 }

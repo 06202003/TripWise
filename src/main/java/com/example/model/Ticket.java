@@ -2,35 +2,28 @@ package com.example.model;
 
 import java.util.Date;
 
-public class Ticket {
+public class Ticket extends User{
     private int id;
-    private String name;
-    private int NIK;
-    private int PNR; //kode booking
+    private int PNR;
     private String orderDate;
-    private String contact;
-    private String address;
     private String price;
     private String departure;
     private String arrival;
     private Date departureTime;
     private Date arrivalTime;
-    private int noChair;
+    private int chairNumber;
 
-    public Ticket(int id, String name, int NIK, int PNR, String orderDate, String contact, String address, String price, String departure, String arrival, Date departureTime, Date arrivalTime, int noChair) {
+    public Ticket(int id, int PNR, String orderDate, String price, String departure, String arrival, Date departureTime, Date arrivalTime, int chairNumber) {
+        super();
         this.id = id;
-        this.name = name;
-        this.NIK = NIK;
         this.PNR = PNR;
         this.orderDate = orderDate;
-        this.contact = contact;
-        this.address = address;
         this.price = price;
         this.departure = departure;
         this.arrival = arrival;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
-        this.noChair = noChair;
+        this.chairNumber = chairNumber;
     }
 
     public int getId() {
@@ -39,22 +32,6 @@ public class Ticket {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getNIK() {
-        return NIK;
-    }
-
-    public void setNIK(int NIK) {
-        this.NIK = NIK;
     }
 
     public int getPNR() {
@@ -71,22 +48,6 @@ public class Ticket {
 
     public void setOrderDate(String orderDate) {
         this.orderDate = orderDate;
-    }
-
-    public String getContact() {
-        return contact;
-    }
-
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getPrice() {
@@ -129,11 +90,11 @@ public class Ticket {
         this.arrivalTime = arrivalTime;
     }
 
-    public int getNoChair() {
-        return noChair;
+    public int getChairNumber() {
+        return chairNumber;
     }
 
-    public void setNoChair(int noChair) {
-        this.noChair = noChair;
+    public void setChairNumber(int chairNumber) {
+        this.chairNumber = chairNumber;
     }
 }

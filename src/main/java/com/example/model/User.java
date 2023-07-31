@@ -1,17 +1,16 @@
 package com.example.model;
 
+import java.util.Date;
+
 public class User {
     private int id;
     private String name;
+    private Date tanggalLahir;
     private String address;
     private String phone;
+    private String username;
+    private String password;
 
-    public User(int id, String name, String address, String phone) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.phone = phone;
-    }
 
     public int getId() {
         return id;
@@ -29,6 +28,14 @@ public class User {
         this.name = name;
     }
 
+    public Date getTanggalLahir() {
+        return tanggalLahir;
+    }
+
+    public void setTanggalLahir(Date tanggalLahir) {
+        this.tanggalLahir = tanggalLahir;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -43,5 +50,21 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

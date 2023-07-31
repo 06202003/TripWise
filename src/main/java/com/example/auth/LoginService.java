@@ -1,6 +1,9 @@
 package com.example.auth;
 
-import com.example.entity.User;
+import com.example.model.User;
+
+import java.time.LocalDate;
+import java.util.Date;
 
 public class LoginService {
     public boolean authenticate(String username, String password) {
@@ -14,10 +17,10 @@ public class LoginService {
         // Dalam implementasi sebenarnya, Anda akan mengambil data pengguna dari database berdasarkan username.
         // Di sini, kita akan kembalikan objek User dengan data yang sudah ditentukan.
         User user = new User();
-        user.setNama("John Doe");
-        user.setNik(1234567890);
-        user.setAlamat("Jl. Contoh No. 123");
-        user.setTanggalLahir("01-01-1990");
+        user.setName("John Doe");
+        user.setAddress("Jl. Contoh No. 123");
+        user.setTanggalLahir(new Date(1990, 1, 1));
+        user.setPhone("+62 895-0764-7137");
         user.setUsername("admin");
         user.setPassword("12345");
         return user;
