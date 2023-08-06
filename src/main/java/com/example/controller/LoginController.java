@@ -30,7 +30,7 @@ public class LoginController {
     }
 
     @FXML
-    private void handleLoginButtonAction() {
+    public void handleLoginButtonAction() {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
@@ -50,11 +50,19 @@ public class LoginController {
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/demo/home.fxml"));
                     Parent dashboardRoot = fxmlLoader.load();
-                    PesanTiketController dashboardController = fxmlLoader.getController();
-
+//                    PesanTiketController dashboardController = fxmlLoader.getController();
 
                     Stage dashboardStage = new Stage();
                     dashboardStage.setScene(new Scene(dashboardRoot));
+
+                    PesanTiketController dashboardController = fxmlLoader.getController();
+                    dashboardController.setUser(user);
+
+                    dashboardController.setNameText(user.getName());
+                    dashboardController.setNameText1(user.getName());
+                    dashboardController.setAddressText(user.getAddress());
+                    dashboardController.setPhoneText(user.getPhone());
+//                    dashboardController.setTanggalLahirText(user.getTanggalLahir());
 
                     dashboardStage.show();
                     if (loginButton.getScene() != null) {

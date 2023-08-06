@@ -1,10 +1,12 @@
 package com.example.controller;
 
+import com.example.model.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 
 public class PesanTiketController {
     @FXML
@@ -24,6 +26,58 @@ public class PesanTiketController {
 
     @FXML
     private ComboBox<String> hotelComboBox;
+
+    @FXML
+    private Text nameText;
+
+    @FXML
+    private Text nameText1;
+
+    @FXML
+    private Text addressText;
+
+    @FXML
+    private Text phoneText;
+
+//    @FXML
+//    private Text tanggalLahirText;
+
+    public void setAddressText(String address) {
+        addressText.setText(address);
+    }
+
+    public void setPhoneText(String phone) {
+        phoneText.setText(phone);
+    }
+
+//    public void setTanggalLahirText(Date tanggalLahir) {
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+//        String formattedDate = dateFormat.format(tanggalLahir);
+//        tanggalLahirText.setText(formattedDate);
+//    }
+
+    private User user; // Tambahkan atribut User untuk menyimpan objek user yang diterima dari LoginController
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setNameText(String name) {
+        nameText.setText(name);
+    }
+
+    public void setNameText1(String name) {
+        nameText1.setText(name);
+    }
+
+    // Metode lain di controller lain
+    public String getUserName() {
+        if (user != null) {
+            return user.getName();
+        } else {
+            return "User belum diatur";
+        }
+    }
 
     public void initialize() {
         ObservableList<String> origins = FXCollections.observableArrayList(

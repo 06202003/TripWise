@@ -57,8 +57,35 @@
                 <Tab text="Home">
                   <content>
                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-
-                     </AnchorPane>
+                           <children>
+                              <GridPane prefHeight="55.0" prefWidth="801.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="470.33331298828125" minWidth="10.0" prefWidth="284.3333435058594" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="533.3333435058594" minWidth="10.0" prefWidth="516.6666564941406" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Selamat Datang Kembali" GridPane.halignment="RIGHT">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets />
+                                       </GridPane.margin>
+                                    </Text>
+                                    <Text fx:id="nameText1" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" GridPane.columnIndex="1">
+                                       <font>
+                                          <Font name="Segoe Print" size="24.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="10.0" />
+                                       </GridPane.margin>
+                                    </Text>
+                                 </children>
+                              </GridPane>
+                           </children></AnchorPane>
                   </content>
                 </Tab>
                 <Tab text="Buy Ticket">
@@ -407,7 +434,7 @@
                                           </AnchorPane>
                                        </content>
                                     </Tab>
-                                    <Tab text="Kereta Api" fx:id="keretaApiTab" >
+                                    <Tab fx:id="keretaApiTab" text="Kereta Api">
                                        <content>
                                           <fx:include source="keretaapi.fxml" />
                                        </content>
@@ -665,6 +692,161 @@
                         </AnchorPane>
                   </content>
                 </Tab>
+                  <Tab text="Profile">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <GridPane layoutY="-1.0" prefHeight="510.0" prefWidth="800.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="396.66668701171875" minWidth="10.0" prefWidth="245.99998474121094" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="573.9999847412109" minWidth="10.0" prefWidth="554.0000152587891" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <GridPane GridPane.columnIndex="1">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints maxHeight="166.66665649414062" minHeight="0.0" prefHeight="51.33332824707031" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="410.0" minHeight="10.0" prefHeight="40.99998474121094" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="451.33331298828125" minHeight="10.0" prefHeight="52.33332824707031" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="378.3333282470703" minHeight="10.0" prefHeight="49.33331298828125" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="401.6666717529297" minHeight="10.0" prefHeight="341.66668701171875" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Biod" GridPane.halignment="RIGHT">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name : " GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Address : " GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fx:id="nameText" strokeType="OUTSIDE" strokeWidth="0.0" text="" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fx:id="addressText" strokeType="OUTSIDE" strokeWidth="0.0" text="address" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="5.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <Text fx:id="phoneText" strokeType="OUTSIDE" strokeWidth="0.0" text="phone" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="5.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number : " GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fx:id="nameText" strokeType="OUTSIDE" strokeWidth="0.0" text="name" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="5.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ata" GridPane.columnIndex="1">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </GridPane>
+                                    <GridPane>
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints maxHeight="166.66665649414062" minHeight="10.0" prefHeight="54.33332824707031" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="393.33333587646484" minHeight="10.0" prefHeight="186.6666717529297" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="268.66668701171875" minHeight="10.0" prefHeight="268.66668701171875" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label text="Photo Profil" GridPane.halignment="CENTER">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                          <GridPane prefHeight="86.0" prefWidth="245.0" GridPane.rowIndex="2">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints maxHeight="131.66668701171875" minHeight="10.0" prefHeight="64.33334350585938" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="221.33331298828125" minHeight="10.0" prefHeight="204.66665649414062" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <GridPane>
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <Button mnemonicParsing="false" text="Update Profil" GridPane.halignment="RIGHT">
+                                                         <GridPane.margin>
+                                                            <Insets right="10.0" />
+                                                         </GridPane.margin>
+                                                      </Button>
+                                                      <Button mnemonicParsing="false" text="Delete Profil" GridPane.columnIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets left="10.0" />
+                                                         </GridPane.margin>
+                                                      </Button>
+                                                   </children>
+                                                </GridPane>
+                                                <GridPane GridPane.rowIndex="1">
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                    <RowConstraints maxHeight="99.66665649414062" minHeight="10.0" prefHeight="39.666656494140625" vgrow="SOMETIMES" />
+                                                    <RowConstraints maxHeight="177.33334350585938" minHeight="10.0" prefHeight="165.33334350585938" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <Label text="Preview Photo Profil" GridPane.halignment="CENTER">
+                                                         <font>
+                                                            <Font size="24.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                                   </children>
+                                                </GridPane>
+                                             </children>
+                                          </GridPane>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
               </tabs>
             </TabPane>
          </children>
