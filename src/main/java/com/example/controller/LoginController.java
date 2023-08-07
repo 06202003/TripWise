@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
@@ -74,10 +75,17 @@ public class LoginController {
             }
         } else {
             System.out.println("Login gagal! Periksa kembali username dan password Anda.");
+            showAlert("Invalid Login", "Please check your username and password.", Alert.AlertType.ERROR);
         }
     }
-
-
+    @FXML
+    private void showAlert(String title, String content, Alert.AlertType alertType) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
 
 
 }

@@ -17,7 +17,7 @@ public class LoginService {
         // Dalam implementasi sebenarnya, Anda akan mengambil data pengguna dari database berdasarkan username.
         // Di sini, kita akan kembalikan objek User dengan data yang sudah ditentukan.
         User user = new User();
-        user.setName("John Doe");
+        user.setName("Cristianto David");
         user.setAddress("Jl. Contoh No. 123");
         user.setTanggalLahir(new Date(1990, 1, 1));
         user.setPhone("+62 895-0764-7137");

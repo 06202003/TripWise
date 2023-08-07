@@ -7,9 +7,7 @@ public class Flight {
     private int noFlight;
     private String airport;
     private String Luggage;
-//    tipe flight
-//    nama flight
-//
+
 
     public Flight(int id, int noFlight, String airport, String luggage) {
         this.id = id;

@@ -1,24 +1,20 @@
 package com.example.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Route {
-    private List<String> routeStations;
+    private List<Station> stations;
 
-    public Route(List<String> routeStations) {
-        this.routeStations = routeStations;
+    public Route() {
+        stations = new ArrayList<>();
     }
 
-    public List<String> getRouteStations() {
-        return routeStations;
+    public void addStation(Station station) {
+        stations.add(station);
     }
 
-    public void setRouteStations(List<String> routeStations) {
-        this.routeStations = routeStations;
-    }
-
-    @Override
-    public String toString() {
-        return "Route Stations: " + routeStations;
+    public List<Station> getStations() {
+        return stations;
     }
 }

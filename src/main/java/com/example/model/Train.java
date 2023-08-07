@@ -1,48 +1,61 @@
 package com.example.model;
 
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Train {
-    private int id;
-    private List<String> routeStations;
-    private int noTrain;
+    private String departureStation;
+    private String arrivalStation;
+    private LocalTime departureTime;
+    private LocalTime arrivalTime;
+    private Route route;
 
-    public Train(int id, List<String> routeStations, int noTrain) {
-        this.id = id;
-        this.routeStations = routeStations;
-        this.noTrain = noTrain;
+    public Train(String departureStation, String arrivalStation, LocalTime departureTime, LocalTime arrivalTime, Route route) {
+        this.departureStation = departureStation;
+        this.arrivalStation = arrivalStation;
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
+        this.route = route;
     }
 
-    public int getId() {
-        return id;
+    public String getDepartureStation() {
+        return departureStation;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setDepartureStation(String departureStation) {
+        this.departureStation = departureStation;
     }
 
-    public List<String> getRouteStations() {
-        return routeStations;
+    public String getArrivalStation() {
+        return arrivalStation;
     }
 
-    public void setRouteStations(List<String> routeStations) {
-        this.routeStations = routeStations;
+    public void setArrivalStation(String arrivalStation) {
+        this.arrivalStation = arrivalStation;
     }
 
-    public int getNoTrain() {
-        return noTrain;
+    public LocalTime getDepartureTime() {
+        return departureTime;
     }
 
-    public void setNoTrain(int noTrain) {
-        this.noTrain = noTrain;
+    public void setDepartureTime(LocalTime departureTime) {
+        this.departureTime = departureTime;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Train ID: ").append(id).append("\n");
-        sb.append("Route Stations: ").append(routeStations).append("\n");
-        sb.append("Train Number: ").append(noTrain).append("\n");
-        return sb.toString();
+    public LocalTime getArrivalTime() {
+        return arrivalTime;
     }
+
+    public void setArrivalTime(LocalTime arrivalTime) {
+        this.arrivalTime = arrivalTime;
+    }
+    public void setRoute(Route route) {
+        this.route = route;
+    }
+
+    public Route getRoute() {
+        return route;
+    }
+
 }
