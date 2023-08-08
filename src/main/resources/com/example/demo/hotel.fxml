@@ -58,7 +58,7 @@
                           </TextFlow>
                           <HBox prefHeight="26.0" prefWidth="381.0">
                               <children>
-                                  <ComboBox fx:id="hotelComboBox" prefHeight="26.0" prefWidth="378.0" promptText="The Trans Luxury Hotel">
+                                  <ComboBox fx:id="hotelComboBox" prefHeight="26.0" prefWidth="378.0" promptText="Pilih Lokasi Kota">
                                       <HBox.margin>
                                           <Insets right="20.0" />
                                       </HBox.margin>
@@ -87,7 +87,7 @@
                                                                   <Insets />
                                                               </HBox.margin>
                                                           </Text>
-                                                          <DatePicker prefHeight="26.0" prefWidth="108.0" promptText="Choose Date" />
+                                                          <DatePicker fx:id="checkInDatePicker" prefHeight="26.0" prefWidth="108.0" promptText="Choose Date" />
                                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Check-out" wrappingWidth="67.01385116577148">
                                                               <font>
                                                                   <Font size="14.0" />
@@ -96,7 +96,7 @@
                                                                   <Insets left="15.0" />
                                                               </HBox.margin>
                                                           </Text>
-                                                          <DatePicker prefHeight="26.0" prefWidth="116.0" promptText="Choose Date" />
+                                                          <DatePicker fx:id="checkOutDatePicker" prefHeight="26.0" prefWidth="108.0" promptText="Choose Date" />
                                                       </children>
                                                   </HBox>
                                               </children>
@@ -110,14 +110,15 @@
                                   <Insets top="20.0" />
                               </VBox.margin>
                               <children>
-                                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="381.0" text="Search Hotel" />
+                                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="381.0" text="Search Hotel" onAction="#searchHotels" />
                               </children>
                           </HBox>
                       </children>
                   </VBox>
               </children>
           </HBox>
-         <ListView prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+          <ListView fx:id="hotelListView" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+
       </children>
    </GridPane>
 </AnchorPane>

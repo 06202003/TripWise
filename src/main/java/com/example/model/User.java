@@ -10,10 +10,27 @@ public class User {
     private String phone;
     private String username;
     private String password;
-
+    private String NIK;
+    private String email;
 
     public int getId() {
         return id;
+    }
+
+    public String getNIK() {
+        return NIK;
+    }
+
+    public void setNIK(String NIK) {
+        this.NIK = NIK;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setId(int id) {
