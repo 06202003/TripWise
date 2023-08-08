@@ -75,7 +75,7 @@ public class LoginController {
             }
         } else {
             System.out.println("Login gagal! Periksa kembali username dan password Anda.");
-            showAlert("Invalid Login", "Please check your username and password.", Alert.AlertType.ERROR);
+            showAlert("Login gagal!", "Periksa kembali username dan password Anda.", Alert.AlertType.ERROR);
         }
     }
     @FXML
