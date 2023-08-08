@@ -3,8 +3,6 @@ package com.example.model;
 import java.util.Date;
 
 public class Hotel {
-//    nama hotel
-//
     private String checkIn;
     private String checkOut;
     private String tipeRoom;

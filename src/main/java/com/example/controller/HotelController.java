@@ -11,18 +11,16 @@ public class HotelController {
 
     public void initialize() {
         ObservableList<String> hotels = FXCollections.observableArrayList(
-                "The Trans Luxury Hotel",
-                "Sheraton Bandung Hotel & Towers",
-                "Grand Mercure Bandung Setiabudi",
-                "Padma Hotel Bandung",
-                "Aston Pasteur Hotel"
+                "Bandung",
+                "Jakarta",
+                "Bali"
         );
         hotelComboBox.setItems(hotels);
 
         hotelComboBox.setOnAction(event -> {
             String selectedHotel = hotelComboBox.getSelectionModel().getSelectedItem();
             if (selectedHotel != null) {
-                System.out.println("Anda memilih hotel: " + selectedHotel);
+                System.out.println("Anda memilih Kota: " + selectedHotel);
             }
         });
 
