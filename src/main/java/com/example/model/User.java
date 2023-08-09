@@ -12,6 +12,7 @@ public class User {
     private String password;
     private String NIK;
     private String email;
+    private String profilePicture; // Tambahkan atribut untuk gambar profil
 
     public int getId() {
         return id;
@@ -83,5 +84,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
     }
 }

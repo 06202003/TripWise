@@ -482,18 +482,6 @@
                                                   <rowConstraints>
                                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                   </rowConstraints>
-                                                   <children>
-                                                      <Button mnemonicParsing="false" text="Update Profil" GridPane.halignment="RIGHT">
-                                                         <GridPane.margin>
-                                                            <Insets right="10.0" />
-                                                         </GridPane.margin>
-                                                      </Button>
-                                                      <Button mnemonicParsing="false" text="Delete Profil" GridPane.columnIndex="1">
-                                                         <GridPane.margin>
-                                                            <Insets left="10.0" />
-                                                         </GridPane.margin>
-                                                      </Button>
-                                                   </children>
                                                 </GridPane>
                                                 <GridPane GridPane.rowIndex="1">
                                                   <columnConstraints>
@@ -504,12 +492,19 @@
                                                     <RowConstraints maxHeight="177.33334350585938" minHeight="10.0" prefHeight="165.33334350585938" vgrow="SOMETIMES" />
                                                   </rowConstraints>
                                                    <children>
-                                                      <Label text="Preview Photo Profil" GridPane.halignment="CENTER">
+                                                      <Label text="Ganti Photo Profil" GridPane.halignment="CENTER">
                                                          <font>
                                                             <Font size="24.0" />
                                                          </font>
                                                       </Label>
-                                                      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                                      <Button onMouseClicked="#gantiProfileAAA" mnemonicParsing="false" prefHeight="46.0" prefWidth="246.0" text="Click Here!" textAlignment="CENTER" GridPane.rowIndex="1">
+                                                         <font>
+                                                            <Font size="24.0" />
+                                                         </font>
+                                                         <GridPane.margin>
+                                                            <Insets left="20.0" right="20.0" />
+                                                         </GridPane.margin>
+                                                      </Button>
                                                    </children>
                                                 </GridPane>
                                              </children>

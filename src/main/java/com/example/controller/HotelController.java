@@ -15,6 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class HotelController {
@@ -106,11 +107,24 @@ public class HotelController {
                     // Kode untuk menangani konfirmasi pesanan dan metode pembayaran
                     System.out.println(" ");
                     String selectedMetode = metodePembayaranComboBox.getValue();
-                    System.out.println("Pesanan untuk hotel " + hotel.getNameHotel() + " dikonfirmasi.");
-                    System.out.println("Metode Pembayaran: " + selectedMetode);
-                    System.out.println("Tanggal Check-in: " + checkInDatePicker);
-                    System.out.println("Tanggal Check-out: " + checkOutDatePicker);
-                    System.out.println(" ");
+//                    System.out.println("Pesanan untuk hotel " + hotel.getNameHotel() + " dikonfirmasi.");
+//                    System.out.println("Metode Pembayaran: " + selectedMetode);
+//                    System.out.println("Tanggal Check-in: " + checkInDatePicker);
+//                    System.out.println("Tanggal Check-out: " + checkOutDatePicker);
+//                    System.out.println(" ");
+
+                    Alert confirmationAlert = new Alert(Alert.AlertType.INFORMATION);
+                    confirmationAlert.setTitle("Confirmation Details");
+                    confirmationAlert.setHeaderText("Booking Confirmation for " + hotel.getNameHotel());
+                    confirmationAlert.setContentText(
+                            "Metode Pembayaran: " + selectedMetode + "\n" +
+                                    "Tanggal Check-in: " + checkInDatePicker + "\n" +
+                                    "Tanggal Check-out: " + checkOutDatePicker
+                    );
+
+                    // Show the alert and wait for the user's response
+                    confirmationAlert.showAndWait();
+
                     ConfirmationData data = new ConfirmationData(hotel.getNameHotel(), selectedMetode, checkInDatePicker, checkOutDatePicker);
 
                     int hotelIndex = hotels.indexOf(hotel);
