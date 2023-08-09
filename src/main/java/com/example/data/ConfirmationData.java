@@ -1,5 +1,8 @@
 package com.example.data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ConfirmationData {
     private String hotelName;
     private String paymentMethod;
@@ -11,6 +14,9 @@ public class ConfirmationData {
         this.paymentMethod = paymentMethod;
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
+    }
+
+    public ConfirmationData(List<ArrayList<ConfirmationData>> confirmedHotelsList) {
     }
 
     public String getHotelName() {

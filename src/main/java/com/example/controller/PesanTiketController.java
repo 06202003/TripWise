@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.data.ConfirmationData;
+import com.example.data.ConfirmationModel;
 import com.example.model.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -8,11 +9,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PesanTiketController {
+    @FXML
+    public ListView<VBox> confirmedHotelsListView;
     @FXML
     private Text nameText;
     @FXML
@@ -22,28 +31,56 @@ public class PesanTiketController {
     @FXML
     private Text phoneText;
     @FXML
-    private ListView<ConfirmationData> dataListView;
-    static ObservableList<ConfirmationData> confirmedHotels = HotelController.getConfirmedHotels();
+    private ListView<VBox> dataListView;
+//    ObservableList<ConfirmationData> confirmedHotels = HotelController.getConfirmedHotels();
 
-    public void initialize() {
-        // Inisialisasi data yang sudah ada
-        ObservableList<ConfirmationData> dataList = FXCollections.observableArrayList(
-                new ConfirmationData("Item 1", "Cash", "10/5/23", "10/5/23")
-                // Masukkan data lainnya di sini
-        );
+    public void receiveConfirmedHotelsList(List<ArrayList<ConfirmationData>> data) {
+        // Clear existing items in the ListView
+        confirmedHotelsListView.getItems().clear();
 
-        dataListView.setItems(dataList);
-    }
+        // Iterate through the received data and create VBox items for each hotel
+        for (ArrayList<ConfirmationData> hotelDataList : data) {
+            VBox hotelInfoBox = new VBox();
+            for (ConfirmationData hotelData : hotelDataList) {
+                // Create labels/buttons for each ConfirmationData and add to hotelInfoBox
+                // ...
 
-    public static ObservableList<ConfirmationData> getConfirmedHotels() {
-        return confirmedHotels;
-    }
-    public void printConfirmedHotels() {
-        System.out.println("Confirmed Hotel Data:");
-        for (ConfirmationData data : confirmedHotels) {
-            System.out.println(data.toString());
+                // For example:
+                Label nameLabel = new Label("Hotel Name: " + hotelData.getHotelName());
+                Button detailsButton = new Button("Details");
+
+                hotelInfoBox.getChildren().addAll(nameLabel, detailsButton);
+            }
+            confirmedHotelsListView.getItems().add(hotelInfoBox);
+            confirmedHotelsListView.refresh();
+
         }
     }
+
+    public void initialize() {
+        List<ArrayList<ConfirmationData>> receivedData = ConfirmationModel.getConfirmedHotelsList();
+        receiveConfirmedHotelsList(receivedData);
+        confirmedHotelsListView.refresh();
+
+        // Iisialisasi data yang sudah ada
+        ObservableList<ConfirmationData> dataList = FXCollections.observableArrayList(
+                new ConfirmationData("Item 1", "Cash", "10/5/23", "10/5/23")// Masukkan data lainnya di sini
+        );
+
+//        confirmedHotelsListView.setItems(dataList);
+//        dataListView.setItems(dataList);
+
+    }
+//    public void accessConfirmedHotelsList() {
+//        List<ArrayList<ConfirmationData>> confirmedHotelsList = HotelController.getConfirmedHotelsList();
+//
+//        // Misalnya, kita akan mencetak semua data terkonfirmasi dari setiap hotel
+//        for (ArrayList<ConfirmationData> hotelList : confirmedHotelsList) {
+//            for (ConfirmationData data : hotelList) {
+//                System.out.println(data.toString());
+//            }
+//        }
+//    }
 
     public void setAddressText(String address) {
         addressText.setText(address);

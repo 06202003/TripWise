@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.data.ConfirmationData;
+import com.example.data.ConfirmationModel;
 import com.example.data.HotelData;
 import com.example.model.Hotel;
 import javafx.collections.FXCollections;
@@ -30,6 +31,7 @@ public class HotelController {
     private HotelData hotelData;
     private List<ConfirmationData> confirmationDataList = new ArrayList<>();
     private static ObservableList<ConfirmationData> confirmedHotels = FXCollections.observableArrayList();
+    private static List<ArrayList<ConfirmationData>> confirmedHotelsList = new ArrayList<>();
 
     @FXML
     public void initialize() {
@@ -66,11 +68,8 @@ public class HotelController {
     }
     @FXML
     private void searchHotels() {
-
         String selectedCity = hotelComboBox.getSelectionModel().getSelectedItem();
-
         List<Hotel> hotels = hotelData.getHotelsByCity(selectedCity);
-
         // Bersihkan ListView dan tambahkan daftar hotel
         hotelListView.getItems().clear();
         for (Hotel hotel : hotels) {
@@ -82,7 +81,6 @@ public class HotelController {
                     "Return Ticket = " + hotel.getReturnTicket().toLowerCase();
 
             Button pesanButton = new Button("Pesan"); // Membuat tombol "Pesan"
-
             pesanButton.setOnAction(event -> {
                 // Membuat jendela baru
                 Stage pesanStage = new Stage();
@@ -95,7 +93,6 @@ public class HotelController {
                 String checkOut = hotel.getCheckOut();
                 Label checkInLabel = new Label("Tanggal Check-in: " + checkIn);
                 Label checkOutLabel = new Label("Tanggal Check-out: " + checkOut);
-
 
                 String checkInDatePicker = hotel.getCheckIn();
                 String checkOutDatePicker = hotel.getCheckOut();
@@ -114,15 +111,29 @@ public class HotelController {
                     System.out.println("Tanggal Check-in: " + checkInDatePicker);
                     System.out.println("Tanggal Check-out: " + checkOutDatePicker);
                     System.out.println(" ");
-
                     ConfirmationData data = new ConfirmationData(hotel.getNameHotel(), selectedMetode, checkInDatePicker, checkOutDatePicker);
+
+                    int hotelIndex = hotels.indexOf(hotel);
+                    if (hotelIndex < confirmedHotelsList.size()) {
+                        confirmedHotelsList.get(hotelIndex).add(data);
+                    } else {
+                        ArrayList<ConfirmationData> newHotelList = new ArrayList<>();
+                        newHotelList.add(data);
+                        confirmedHotelsList.add(newHotelList);
+                    }
+                    System.out.println(confirmedHotelsList);
+
+// Menggunakan model untuk menambah data ke confirmedHotelsList pada model
+                    ConfirmationModel.addConfirmedHotel(confirmedHotelsList.get(hotelIndex));
+
                     confirmationDataList.add(data);
                     confirmedHotels.add(data);
 
 // Print the confirmed hotel data to console
-                    printConfirmedHotels();
+//                    printConfirmedHotels();
+
                     // Cetak ConfirmationData ke konsol
-                    System.out.println(data.toString());
+//                    System.out.println(data.toString());
                     pesanStage.close(); // Menutup jendela setelah konfirmasi
                 });
 
@@ -136,7 +147,6 @@ public class HotelController {
                 pesanStage.show();
             });
 
-
             VBox hotelInfoBox = new VBox(); // Membuat container vertikal untuk informasi hotel
             hotelInfoBox.getChildren().addAll(
                     new Label(hotelInfo),
@@ -145,13 +155,14 @@ public class HotelController {
             hotelListView.getItems().add(hotelInfoBox);
         }
     }
-    public static ObservableList<ConfirmationData> getConfirmedHotels() {
-        return confirmedHotels;
+    public static List<ArrayList<ConfirmationData>> getConfirmedHotelsList() {
+        return confirmedHotelsList;
     }
-    public void printConfirmedHotels() {
-        System.out.println("Confirmed Hotel Data:");
-        for (ConfirmationData data : confirmedHotels) {
-            System.out.println(data.toString());
+
+    public void printConfirmedHotelsList() {
+        System.out.println("Confirmed Hotel Data List:");
+        for (ArrayList<ConfirmationData> hotelList : confirmedHotelsList) {
+            System.out.println(hotelList.toString());
         }
     }
 
