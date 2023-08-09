@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.data.ConfirmationData;
 import com.example.data.HotelData;
 import com.example.model.Hotel;
 import javafx.collections.FXCollections;
@@ -12,6 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HotelController {
@@ -26,6 +28,9 @@ public class HotelController {
     @FXML
     private Button searchButton;
     private HotelData hotelData;
+    private List<ConfirmationData> confirmationDataList = new ArrayList<>();
+    private static ObservableList<ConfirmationData> confirmedHotels = FXCollections.observableArrayList();
+
     @FXML
     public void initialize() {
         hotelData = new HotelData();
@@ -91,8 +96,6 @@ public class HotelController {
                 Label checkInLabel = new Label("Tanggal Check-in: " + checkIn);
                 Label checkOutLabel = new Label("Tanggal Check-out: " + checkOut);
 
-//                System.out.println("Tanggal Check-in: " +  hotel.getCheckIn());
-//                System.out.println("Tanggal Check-out: " + hotel.getCheckOut());
 
                 String checkInDatePicker = hotel.getCheckIn();
                 String checkOutDatePicker = hotel.getCheckOut();
@@ -101,14 +104,25 @@ public class HotelController {
                 metodePembayaranComboBox.getItems().addAll("Kartu Kredit", "Transfer Bank", "OVO", "GoPay", "Cash");
 
                 Button konfirmasiButton = new Button("Konfirmasi");
+
                 konfirmasiButton.setOnAction(confirmEvent -> {
                     // Kode untuk menangani konfirmasi pesanan dan metode pembayaran
+                    System.out.println(" ");
                     String selectedMetode = metodePembayaranComboBox.getValue();
                     System.out.println("Pesanan untuk hotel " + hotel.getNameHotel() + " dikonfirmasi.");
                     System.out.println("Metode Pembayaran: " + selectedMetode);
                     System.out.println("Tanggal Check-in: " + checkInDatePicker);
                     System.out.println("Tanggal Check-out: " + checkOutDatePicker);
+                    System.out.println(" ");
 
+                    ConfirmationData data = new ConfirmationData(hotel.getNameHotel(), selectedMetode, checkInDatePicker, checkOutDatePicker);
+                    confirmationDataList.add(data);
+                    confirmedHotels.add(data);
+
+// Print the confirmed hotel data to console
+                    printConfirmedHotels();
+                    // Cetak ConfirmationData ke konsol
+                    System.out.println(data.toString());
                     pesanStage.close(); // Menutup jendela setelah konfirmasi
                 });
 
@@ -129,6 +143,15 @@ public class HotelController {
                     pesanButton
             );
             hotelListView.getItems().add(hotelInfoBox);
+        }
+    }
+    public static ObservableList<ConfirmationData> getConfirmedHotels() {
+        return confirmedHotels;
+    }
+    public void printConfirmedHotels() {
+        System.out.println("Confirmed Hotel Data:");
+        for (ConfirmationData data : confirmedHotels) {
+            System.out.println(data.toString());
         }
     }
 

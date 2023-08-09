@@ -537,7 +537,7 @@
                                         <content>
                                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                 <children>
-                                                    <ListView fx:id="hotelListView" prefHeight="480.0" prefWidth="801.0" />
+                                                    <ListView fx:id="dataListView" prefHeight="480.0" prefWidth="801.0" />
                                                 </children>
                                             </AnchorPane>
                                         </content>

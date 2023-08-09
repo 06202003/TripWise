@@ -1,30 +1,49 @@
 package com.example.controller;
 
+import com.example.data.ConfirmationData;
 import com.example.model.User;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class PesanTiketController {
-
-
     @FXML
     private Text nameText;
-
     @FXML
     private Text nameText1;
-
     @FXML
     private Text addressText;
-
     @FXML
     private Text phoneText;
+    @FXML
+    private ListView<ConfirmationData> dataListView;
+    static ObservableList<ConfirmationData> confirmedHotels = HotelController.getConfirmedHotels();
 
-//    @FXML
-//    private Text tanggalLahirText;
+    public void initialize() {
+        // Inisialisasi data yang sudah ada
+        ObservableList<ConfirmationData> dataList = FXCollections.observableArrayList(
+                new ConfirmationData("Item 1", "Cash", "10/5/23", "10/5/23")
+                // Masukkan data lainnya di sini
+        );
+
+        dataListView.setItems(dataList);
+    }
+
+    public static ObservableList<ConfirmationData> getConfirmedHotels() {
+        return confirmedHotels;
+    }
+    public void printConfirmedHotels() {
+        System.out.println("Confirmed Hotel Data:");
+        for (ConfirmationData data : confirmedHotels) {
+            System.out.println(data.toString());
+        }
+    }
 
     public void setAddressText(String address) {
         addressText.setText(address);
@@ -34,13 +53,7 @@ public class PesanTiketController {
         phoneText.setText(phone);
     }
 
-//    public void setTanggalLahirText(Date tanggalLahir) {
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-//        String formattedDate = dateFormat.format(tanggalLahir);
-//        tanggalLahirText.setText(formattedDate);
-//    }
-
-    private User user; // Tambahkan atribut User untuk menyimpan objek user yang diterima dari LoginController
+    private User user;
 
     public void setUser(User user) {
         this.user = user;
@@ -62,7 +75,6 @@ public class PesanTiketController {
             return "User belum diatur";
         }
     }
-
 
     @FXML
     private void openFlightSearch() {
