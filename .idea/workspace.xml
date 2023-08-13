@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6153dcfc-6c72-4bb2-964a-25a1e7d39a50" name="Changes" comment="LAST UTS" />
+    <list default="true" id="6153dcfc-6c72-4bb2-964a-25a1e7d39a50" name="Changes" comment="LAST UTS">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/EventController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/event.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/PesanTiketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/PesanTiketController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/home.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,6 +39,9 @@
     </option>
   </component>
   <component name="ProjectId" id="2TjdYbbfof9htLlptae60ouPAyA" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />

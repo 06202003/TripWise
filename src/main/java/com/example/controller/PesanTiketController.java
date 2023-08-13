@@ -164,6 +164,23 @@ public class PesanTiketController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private void eventSearch() {
+        try {
+            FXMLLoader eventloader = new FXMLLoader(getClass().getResource("/com/example/demo/event.fxml"));
+
+            Parent eventroot = eventloader.load();
+
+            Stage dashboardStage = new Stage();
+            dashboardStage.setScene(new Scene(eventroot));
+
+//            FlightController dashboardController = flightroot.getController();
+            dashboardStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     @FXML
     private void gantiProfileAAA() {
         try {
