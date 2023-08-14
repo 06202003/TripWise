@@ -19,10 +19,12 @@ public class LoginService {
         User user = new User();
         user.setName("Cristianto David");
         user.setAddress("Jl. Contoh No. 123");
-        user.setTanggalLahir(new Date(1990, 1, 1));
+        LocalDate birthdate = LocalDate.of(2003, 2, 1); // Year, month, day
+        user.setTanggalLahir(birthdate);
         user.setPhone("+62 895-0764-7137");
         user.setUsername("admin");
         user.setPassword("12345");
+        user.setProfilePicture("D:\\newTripWise\\TripWise\\src\\main\\resources\\com\\example\\demo\\img\\logo.png");
         return user;
     }
 }

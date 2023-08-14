@@ -12,11 +12,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class PesanTiketController {
@@ -30,6 +37,10 @@ public class PesanTiketController {
     private Text addressText;
     @FXML
     private Text phoneText;
+    @FXML
+    private Text birthText;
+    @FXML
+    private ImageView imageText;
     @FXML
     private ListView<VBox> dataListView;
 //    ObservableList<ConfirmationData> confirmedHotels = HotelController.getConfirmedHotels();
@@ -90,10 +101,37 @@ public class PesanTiketController {
         phoneText.setText(phone);
     }
 
+
+    public void setBirthText(LocalDate tanggalLahir) {
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // Choose your desired date format
+        String formattedDate = tanggalLahir.format(dateFormatter);
+        birthText.setText(formattedDate);
+    }
+
+
+    public void setImageView(String imagePath) {
+        File file = new File(imagePath);
+        if (file.exists()) {
+            Image image = new Image(file.toURI().toString());
+            imageText.setImage(image);
+        } else {
+            System.out.println("Image file not found: " + imagePath);
+        }
+    }
+
+    private void updateImageView() {
+        String profilePicturePath = user.getProfilePicture();
+        if (profilePicturePath != null) {
+            Image image = new Image(profilePicturePath);
+            imageText.setImage(image);
+        }
+    }
+
     private User user;
 
     public void setUser(User user) {
         this.user = user;
+        updateImageView();
     }
 
     public void setNameText(String name) {
@@ -187,11 +225,11 @@ public class PesanTiketController {
             FXMLLoader profileloader = new FXMLLoader(getClass().getResource("/com/example/demo/profile.fxml"));
 
             Parent profileroot = profileloader.load();
-
+            ProfileController profileController = profileloader.getController(); // Dapatkan instance dari ProfileController
+            profileController.setUser(user); // Set data pengguna
             Stage dashboardStage = new Stage();
             dashboardStage.setScene(new Scene(profileroot));
 
-//            FlightController dashboardController = flightroot.getController();
             dashboardStage.show();
         } catch (Exception e) {
             e.printStackTrace();

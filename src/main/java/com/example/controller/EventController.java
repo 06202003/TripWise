@@ -40,10 +40,21 @@ public class EventController {
     private class EventCell extends ListCell<Event> {
         private HBox contentBox = new HBox();
         private ImageView imageView = new ImageView();
+        private VBox textInfoBox = new VBox();
+        private Label eventNameLabel = new Label();
         private Button buyTicketButton = new Button("Beli Tiket");
 
         public EventCell() {
-            contentBox.getChildren().addAll(imageView, buyTicketButton);
+            eventNameLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
+
+            HBox buttonBox = new HBox(buyTicketButton);
+            buttonBox.setAlignment(Pos.CENTER_LEFT);
+
+            textInfoBox.getChildren().addAll(eventNameLabel, buttonBox);
+            textInfoBox.setAlignment(Pos.CENTER_LEFT);
+            textInfoBox.setSpacing(5);
+
+            contentBox.getChildren().addAll(imageView, textInfoBox);
             contentBox.setAlignment(Pos.CENTER_LEFT);
             contentBox.setSpacing(10);
             HBox.setHgrow(imageView, Priority.ALWAYS);
@@ -59,6 +70,9 @@ public class EventController {
                 imageView.setImage(event.getImage());
                 imageView.setFitWidth(200);
                 imageView.setPreserveRatio(true);
+
+                eventNameLabel.setText(event.getName()); // Set nama event
+                eventNameLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
 
                 buyTicketButton.setOnAction(e -> buyEventTicket(event));
                 buyTicketButton.setStyle("-fx-font-size: 14px;");

@@ -1,18 +1,18 @@
 package com.example.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class User {
     private int id;
     private String name;
-    private Date tanggalLahir;
+    private LocalDate tanggalLahir;
     private String address;
     private String phone;
     private String username;
     private String password;
     private String NIK;
     private String email;
-    private String profilePicture; // Tambahkan atribut untuk gambar profil
+    private String profilePicture;
 
     public int getId() {
         return id;
@@ -46,11 +46,11 @@ public class User {
         this.name = name;
     }
 
-    public Date getTanggalLahir() {
+    public LocalDate getTanggalLahir() {
         return tanggalLahir;
     }
 
-    public void setTanggalLahir(Date tanggalLahir) {
+    public void setTanggalLahir(LocalDate tanggalLahir) {
         this.tanggalLahir = tanggalLahir;
     }
 

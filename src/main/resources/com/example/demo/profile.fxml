@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.ProfileController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.ProfileController">
     <children>
-        <ImageView fx:id="profileImageView" fitHeight="100.0" fitWidth="100.0" layoutX="20.0" layoutY="20.0" />
-        <TextField fx:id="nameField" layoutX="140.0" layoutY="20.0" promptText="Name" />
-        <!-- Tambahkan elemen-elemen UI lainnya sesuai kebutuhan -->
-        <Button layoutX="20.0" layoutY="150.0" mnemonicParsing="false" onAction="#changeProfilePicture" text="Change Profile Picture" />
+        <ImageView fx:id="imageView" fitWidth="150.0" fitHeight="150.0" pickOnBounds="true" preserveRatio="true" />
+        <Button fx:id="updateImageView" onAction="#gantiFotoButtonClicked" text="Ganti Foto Profil" />
+
     </children>
 </AnchorPane>

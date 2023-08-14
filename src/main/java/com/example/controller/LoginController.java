@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 
 public class LoginController {
@@ -63,6 +64,8 @@ public class LoginController {
                     dashboardController.setNameText1(user.getName());
                     dashboardController.setAddressText(user.getAddress());
                     dashboardController.setPhoneText(user.getPhone());
+                    dashboardController.setBirthText(user.getTanggalLahir());
+                    dashboardController.setImageView(user.getProfilePicture());
 //                    dashboardController.setTanggalLahirText(user.getTanggalLahir());
 
                     dashboardStage.show();
