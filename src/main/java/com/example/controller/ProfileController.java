@@ -19,10 +19,10 @@ public class ProfileController {
     private ImageView imageView;
     private User user;
 
-    public void setUser(User user) {
-        this.user = user;
-        updateImageView();
-    }
+//    public void setUser(User user) {
+//        this.user = user;
+//        updateImageView();
+//    }
 
     @FXML
     private void gantiFotoButtonClicked(ActionEvent event) {
@@ -44,9 +44,9 @@ public class ProfileController {
                 String newProfilePicturePath = "com/example/demo/img/" + fileName; // Path relatif di dalam resource
 
                 // Mengganti path gambar profil pada objek User
-                user.setProfilePicture(newProfilePicturePath);
+//                user.setProfilePicture(newProfilePicturePath);
 
-                updateImageView();
+//                updateImageView();
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -56,22 +56,22 @@ public class ProfileController {
 
 
 
-    private void updateImageView() {
-        String profilePicturePath = user.getProfilePicture();
-        if (profilePicturePath != null) {
-            try {
-                // Mendapatkan URL yang valid untuk objek Image
-                URL imageUrl = getClass().getResource(profilePicturePath);
-                if (imageUrl != null) {
-                    Image image = new Image(imageUrl.toExternalForm());
-                    imageView.setCache(false);
-                    imageView.setImage(image);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
+//    private void updateImageView() {
+//        String profilePicturePath = user.getProfilePicture();
+//        if (profilePicturePath != null) {
+//            try {
+//                // Mendapatkan URL yang valid untuk objek Image
+//                URL imageUrl = getClass().getResource(profilePicturePath);
+//                if (imageUrl != null) {
+//                    Image image = new Image(imageUrl.toExternalForm());
+//                    imageView.setCache(false);
+//                    imageView.setImage(image);
+//                }
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 
 
     private String getExtension(String path) {

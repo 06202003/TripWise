@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.DAO.UserDAO;
 import com.example.data.ConfirmationData;
 import com.example.data.ConfirmationModel;
 import com.example.model.User;
@@ -41,9 +42,41 @@ public class PesanTiketController {
     private Text birthText;
     @FXML
     private ImageView imageText;
-    @FXML
-    private ListView<VBox> dataListView;
-//    ObservableList<ConfirmationData> confirmedHotels = HotelController.getConfirmedHotels();
+    private User loggedInUser;
+    public void initialize() {
+//        if (loggedInUser != null) {
+//            nameText1.setText("Welwercome, " + loggedInUser.getAddress());
+//            addressText.setText(loggedInUser.getAddress());
+//            phoneText.setText(loggedInUser.getPhoneNumber());
+//            // ... (set other user properties if needed)
+//        }
+
+        List<ArrayList<ConfirmationData>> receivedData = ConfirmationModel.getConfirmedHotelsList();
+        receiveConfirmedHotelsList(receivedData);
+        confirmedHotelsListView.refresh();
+
+
+        UserDAO userDAO = new UserDAO();
+        userDAO.displayAllUsersToConsole();
+    }
+
+    // Method to set the logged-in user
+//    public void setLoggedInUser(User user) {
+//        this.loggedInUser = user;
+//
+//        // You can use the user's data here to populate UI elements if needed
+//        nameText.setText(user.getName());
+//        // ... other UI elements ...
+//    }
+
+    public void setLoggedInUser(String username) {
+        if (nameText1 != null) {
+            nameText1.setText(username);
+        } else {
+            System.out.println("nameText1 is null"); // Debugging purposes
+        }
+    }
+
 
     public void receiveConfirmedHotelsList(List<ArrayList<ConfirmationData>> data) {
         // Clear existing items in the ListView
@@ -53,10 +86,6 @@ public class PesanTiketController {
         for (ArrayList<ConfirmationData> hotelDataList : data) {
             VBox hotelInfoBox = new VBox();
             for (ConfirmationData hotelData : hotelDataList) {
-                // Create labels/buttons for each ConfirmationData and add to hotelInfoBox
-                // ...
-
-                // For example:
                 Label nameLabel = new Label("Hotel Name: " + hotelData.getHotelName());
                 Button detailsButton = new Button("Details");
 
@@ -68,20 +97,13 @@ public class PesanTiketController {
         }
     }
 
-    public void initialize() {
-        List<ArrayList<ConfirmationData>> receivedData = ConfirmationModel.getConfirmedHotelsList();
-        receiveConfirmedHotelsList(receivedData);
-        confirmedHotelsListView.refresh();
 
-        // Iisialisasi data yang sudah ada
-        ObservableList<ConfirmationData> dataList = FXCollections.observableArrayList(
-                new ConfirmationData("Item 1", "Cash", "10/5/23", "10/5/23")// Masukkan data lainnya di sini
-        );
 
-//        confirmedHotelsListView.setItems(dataList);
-//        dataListView.setItems(dataList);
+    // Metode ini akan dipanggil setelah pengguna berhasil login
+//    public static void setUserAndDisplayData(String userName) {
+//        nameText1.setText("Nama: " + userName);
+//    }
 
-    }
 //    public void accessConfirmedHotelsList() {
 //        List<ArrayList<ConfirmationData>> confirmedHotelsList = HotelController.getConfirmedHotelsList();
 //
@@ -92,6 +114,8 @@ public class PesanTiketController {
 //            }
 //        }
 //    }
+
+
 
     public void setAddressText(String address) {
         addressText.setText(address);
@@ -119,37 +143,14 @@ public class PesanTiketController {
         }
     }
 
-    private void updateImageView() {
-        String profilePicturePath = user.getProfilePicture();
-        if (profilePicturePath != null) {
-            Image image = new Image(profilePicturePath);
-            imageText.setImage(image);
-        }
-    }
+//    private void updateImageView() {
+//        String profilePicturePath = user.getProfilePicture();
+//        if (profilePicturePath != null) {
+//            Image image = new Image(profilePicturePath);
+//            imageText.setImage(image);
+//        }
+//    }
 
-    private User user;
-
-    public void setUser(User user) {
-        this.user = user;
-        updateImageView();
-    }
-
-    public void setNameText(String name) {
-        nameText.setText(name);
-    }
-
-    public void setNameText1(String name) {
-        nameText1.setText(name);
-    }
-
-    // Metode lain di controller lain
-    public String getUserName() {
-        if (user != null) {
-            return user.getName();
-        } else {
-            return "User belum diatur";
-        }
-    }
 
     @FXML
     private void openFlightSearch() {
@@ -219,20 +220,20 @@ public class PesanTiketController {
             e.printStackTrace();
         }
     }
-    @FXML
-    private void gantiProfileAAA() {
-        try {
-            FXMLLoader profileloader = new FXMLLoader(getClass().getResource("/com/example/demo/profile.fxml"));
-
-            Parent profileroot = profileloader.load();
-            ProfileController profileController = profileloader.getController(); // Dapatkan instance dari ProfileController
-            profileController.setUser(user); // Set data pengguna
-            Stage dashboardStage = new Stage();
-            dashboardStage.setScene(new Scene(profileroot));
-
-            dashboardStage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    @FXML
+//    private void gantiProfileAAA() {
+//        try {
+//            FXMLLoader profileloader = new FXMLLoader(getClass().getResource("/com/example/demo/profile.fxml"));
+//
+//            Parent profileroot = profileloader.load();
+//            ProfileController profileController = profileloader.getController(); // Dapatkan instance dari ProfileController
+//            profileController.setUser(user); // Set data pengguna
+//            Stage dashboardStage = new Stage();
+//            dashboardStage.setScene(new Scene(profileroot));
+//
+//            dashboardStage.show();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 }

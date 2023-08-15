@@ -406,14 +406,14 @@
                                                             <Font size="24.0" />
                                                          </font>
                                                       </Label>
-                                                      <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#gantiProfileAAA" prefHeight="51.0" prefWidth="318.0" text="Click Here!" textAlignment="CENTER" GridPane.rowIndex="1">
-                                                         <font>
-                                                            <Font size="24.0" />
-                                                         </font>
-                                                         <GridPane.margin>
-                                                            <Insets left="20.0" right="20.0" />
-                                                         </GridPane.margin>
-                                                      </Button>
+<!--                                                      <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#gantiProfileAAA" prefHeight="51.0" prefWidth="318.0" text="Click Here!" textAlignment="CENTER" GridPane.rowIndex="1">-->
+<!--                                                         <font>-->
+<!--                                                            <Font size="24.0" />-->
+<!--                                                         </font>-->
+<!--                                                         <GridPane.margin>-->
+<!--                                                            <Insets left="20.0" right="20.0" />-->
+<!--                                                         </GridPane.margin>-->
+<!--                                                      </Button>-->
                                                    </children>
                                                 </GridPane>
                                              </children>

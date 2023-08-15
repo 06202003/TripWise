@@ -1,37 +1,30 @@
 package com.example.model;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class User {
     private int id;
     private String name;
-    private LocalDate tanggalLahir;
+    private Date birthDate;
     private String address;
-    private String phone;
+    private String phoneNumber;
     private String username;
     private String password;
-    private String NIK;
+    private String nik;
     private String email;
     private String profilePicture;
 
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+
     public int getId() {
         return id;
-    }
-
-    public String getNIK() {
-        return NIK;
-    }
-
-    public void setNIK(String NIK) {
-        this.NIK = NIK;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public void setId(int id) {
@@ -46,12 +39,12 @@ public class User {
         this.name = name;
     }
 
-    public LocalDate getTanggalLahir() {
-        return tanggalLahir;
+    public Date getBirthDate() {
+        return birthDate;
     }
 
-    public void setTanggalLahir(LocalDate tanggalLahir) {
-        this.tanggalLahir = tanggalLahir;
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getAddress() {
@@ -62,12 +55,12 @@ public class User {
         this.address = address;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getUsername() {
@@ -86,11 +79,19 @@ public class User {
         this.password = password;
     }
 
-    public String getProfilePicture() {
-        return profilePicture;
+    public String getNik() {
+        return nik;
     }
 
-    public void setProfilePicture(String profilePicture) {
-        this.profilePicture = profilePicture;
+    public void setNik(String nik) {
+        this.nik = nik;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

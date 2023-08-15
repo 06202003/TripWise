@@ -1,42 +1,53 @@
 package com.example.model;
 
-import java.util.Date;
+import com.example.model.modelEnum.StatusHotelEnum;
+import com.example.model.modelEnum.YesNoEnum;
+
+import java.math.BigDecimal;
 
 public class Hotel {
-    private String nameHotel;
+    private int id;
+    private String hotelName;
     private String location;
-    private String checkIn;
-    private String checkOut;
+    private int cityId; // This represents the foreign key
     private String tipeRoom;
-    private String returnTicket;
-    private String maxCapacity;
-    private String price;
+    private YesNoEnum returnTicket;
+    private int maxCapacity;
+    private BigDecimal price;
+    private StatusHotelEnum status;
+    private int remainingRoom;
+    private City city;
 
-    public String getPrice() {
-        return price;
+    public int getCityId() {
+        return cityId;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setCityId(int cityId) {
+        this.cityId = cityId;
     }
 
-    public Hotel(String nameHotel, String location, String checkIn, String checkOut, String tipeRoom, String returnTicket, String maxCapacity, String price) {
-        this.nameHotel = nameHotel;
-        this.location = location;
-        this.checkIn = checkIn;
-        this.checkOut = checkOut;
-        this.tipeRoom = tipeRoom;
-        this.returnTicket = returnTicket;
-        this.maxCapacity = maxCapacity;
-        this.price = price;
+    public City getCity() {
+        return city;
     }
 
-    public String getNameHotel() {
-        return nameHotel;
+    public void setCity(City city) {
+        this.city = city;
     }
 
-    public void setNameHotel(String nameHotel) {
-        this.nameHotel = nameHotel;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getHotelName() {
+        return hotelName;
+    }
+
+    public void setHotelName(String hotelName) {
+        this.hotelName = hotelName;
     }
 
     public String getLocation() {
@@ -47,30 +58,6 @@ public class Hotel {
         this.location = location;
     }
 
-    public String getMaxCapacity() {
-        return maxCapacity;
-    }
-
-    public void setMaxCapacity(String maxCapacity) {
-        this.maxCapacity = maxCapacity;
-    }
-
-    public String getCheckIn() {
-        return checkIn;
-    }
-
-    public void setCheckIn(String checkIn) {
-        this.checkIn = checkIn;
-    }
-
-    public String getCheckOut() {
-        return checkOut;
-    }
-
-    public void setCheckOut(String checkOut) {
-        this.checkOut = checkOut;
-    }
-
     public String getTipeRoom() {
         return tipeRoom;
     }
@@ -79,11 +66,43 @@ public class Hotel {
         this.tipeRoom = tipeRoom;
     }
 
-    public String getReturnTicket() {
+    public YesNoEnum getReturnTicket() {
         return returnTicket;
     }
 
-    public void setReturnTicket(String returnTicket) {
+    public void setReturnTicket(YesNoEnum returnTicket) {
         this.returnTicket = returnTicket;
+    }
+
+    public int getMaxCapacity() {
+        return maxCapacity;
+    }
+
+    public void setMaxCapacity(int maxCapacity) {
+        this.maxCapacity = maxCapacity;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public StatusHotelEnum getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusHotelEnum status) {
+        this.status = status;
+    }
+
+    public int getRemainingRoom() {
+        return remainingRoom;
+    }
+
+    public void setRemainingRoom(int remainingRoom) {
+        this.remainingRoom = remainingRoom;
     }
 }
