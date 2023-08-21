@@ -1,21 +1,22 @@
 package com.example.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TrainRoute {
+    private int trainRouteId;
     private String sourceStation;
     private String destinationStation;
     private List<Train> availableTrains;
 
-    public TrainRoute(String sourceStation, String destinationStation) {
+    public TrainRoute(int trainRouteId, String sourceStation, String destinationStation, List<Train> availableTrains) {
+        this.trainRouteId = trainRouteId;
         this.sourceStation = sourceStation;
         this.destinationStation = destinationStation;
-        this.availableTrains = new ArrayList<>();
+        this.availableTrains = availableTrains;
     }
 
-    public void addTrain(Train train) {
-        availableTrains.add(train);
+    public int getTrainRouteId() {
+        return trainRouteId;
     }
 
     public String getSourceStation() {

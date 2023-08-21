@@ -1,14 +1,21 @@
 package com.example.controller;
 
+import com.example.DAO.FlightDAO;
+import com.example.DAO.FlightDAOImpl;
 import com.example.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
+import javafx.geometry.Pos;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 
-import java.time.LocalTime;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class FlightController {
 
@@ -19,92 +26,95 @@ public class FlightController {
     private ComboBox<String> destinationComboBox1;
 
     @FXML
-    private ListView<String> resultListViewAirplane;
-
-    private AirplaneRouteSearch airplaneRouteSearch;
-
-    public void initialize() {
-        airplaneRouteSearch = new AirplaneRouteSearch();
-
-        Airplane airplane1 = new Airplane("Garuda Indonesia", LocalTime.of(6, 30), LocalTime.of(7, 55),"1200000","Economy");
-        Airplane airplane2 = new Airplane("Citilink", LocalTime.of(12, 30), LocalTime.of(13, 55),"1500000","Businnes");
-        Airplane airplane3 = new Airplane("Air Asia", LocalTime.of(18, 10), LocalTime.of(19, 25),"1300000","First Class");
-        Airplane airplane4 = new Airplane("Lion Air", LocalTime.of(20, 10), LocalTime.of(21, 35),"1200000","Economy");
-        Airplane airplane5 = new Airplane("Etihad Airways", LocalTime.of(10, 10), LocalTime.of(12, 35),"1000000","Economy");
-        Airplane airplane6 = new Airplane("Ana Air", LocalTime.of(00, 10), LocalTime.of(2, 00),"900000","Economy");
-
-        AirplaneRoute airplaneRoute1 = new AirplaneRoute("Jakarta", "Bali");
-        airplaneRoute1.addAirplane(airplane1);
-        airplaneRoute1.addAirplane(airplane2);
-
-        AirplaneRoute airplaneRoute2 = new AirplaneRoute("Bali", "Jakarta");
-        airplaneRoute2.addAirplane(airplane1);
-        airplaneRoute2.addAirplane(airplane2);
-
-        AirplaneRoute airplaneRoute3 = new AirplaneRoute("Jakarta", "Bandung");
-        airplaneRoute3.addAirplane(airplane2);
-        airplaneRoute3.addAirplane(airplane3);
-        airplaneRoute3.addAirplane(airplane4);
-
-        AirplaneRoute airplaneRoute4 = new AirplaneRoute("Bandung", "Jakarta");
-        airplaneRoute4.addAirplane(airplane2);
-        airplaneRoute4.addAirplane(airplane3);
-        airplaneRoute4.addAirplane(airplane4);
-
-        AirplaneRoute airplaneRoute5 = new AirplaneRoute("Bandung", "Bali");
-        airplaneRoute5.addAirplane(airplane5);
-        airplaneRoute5.addAirplane(airplane6);
-
-        AirplaneRoute airplaneRoute6 = new AirplaneRoute("Bali", "Bandung");
-        airplaneRoute6.addAirplane(airplane5);
-        airplaneRoute6.addAirplane(airplane6);
-
-        airplaneRouteSearch.addRouteA(airplaneRoute1); // Change this to addRouteA
-        airplaneRouteSearch.addRouteA(airplaneRoute2); // Change this to addRouteA
-        airplaneRouteSearch.addRouteA(airplaneRoute3); // Change this to addRouteA
-        airplaneRouteSearch.addRouteA(airplaneRoute4); // Change this to addRouteA
-        airplaneRouteSearch.addRouteA(airplaneRoute5); // Change this to addRouteA
-        airplaneRouteSearch.addRouteA(airplaneRoute6); // Change this to addRouteA
-
-
-        ObservableList<String> origins2 = FXCollections.observableArrayList(
-                "Jakarta",
-                "Bandung",
-                "Bali"
-        );
-        originComboBox1.setItems(origins2);
-
-        ObservableList<String> destinations2 = FXCollections.observableArrayList(
-                "Jakarta",
-                "Bandung",
-                "Bali"
-        );
-        destinationComboBox1.setItems(destinations2);
-    }
-
-
+    private ListView<AirplaneRoute> resultListViewAirplane;
 
     @FXML
-    private void searchTicketButtonAirplane() {
-        String source1 = originComboBox1.getValue();
-        String destination1 = destinationComboBox1.getValue();
+    private Button searchTicketButtonAirplane; // Added this line
 
-        System.out.println(source1);
-        System.out.println(destination1);
+    private FlightDAO flightDAO;
 
-        List<AirplaneRoute> matchingTrainRoutes = airplaneRouteSearch.searchRoutes(source1, destination1);
+    public void initialize() {
+        flightDAO = new FlightDAOImpl();
+
+        List<String> origins = flightDAO.getAllOrigins();
+        ObservableList<String> originsObservableList = FXCollections.observableArrayList(origins);
+        originComboBox1.setItems(originsObservableList);
+
+        List<String> destinations = flightDAO.getAllDestinations();
+        ObservableList<String> destinationsObservableList = FXCollections.observableArrayList(destinations);
+        destinationComboBox1.setItems(destinationsObservableList);
+
+        resultListViewAirplane.setCellFactory(param -> new AirplaneRouteCell());
+    }
+
+    @FXML
+    private void searchTicketButtonAirplane() { // Renamed this method
+        String source = originComboBox1.getValue();
+        String destination = destinationComboBox1.getValue();
+
+        List<AirplaneRoute> matchingAirplaneRoutes = flightDAO.searchRoutes(source, destination);
 
         resultListViewAirplane.getItems().clear();
-        for (AirplaneRoute airplaneRoute : matchingTrainRoutes) {
-            List<Airplane> availableAirplane = airplaneRoute.getAvailableAirplane();
-            for (Airplane airplane : availableAirplane) {
-                String airplaneInfo = airplane.getAirplaneName() + " | " +
-                        airplane.getOriginTime() + " - " +
-                        airplane.getDepartureTime() + " | " +
-                        airplane.getTicketPrice();
-                resultListViewAirplane.getItems().add(airplaneInfo);
-            }
+        for (AirplaneRoute airplaneRoute : matchingAirplaneRoutes) {
+            resultListViewAirplane.getItems().add(airplaneRoute);
         }
     }
 
+    private class AirplaneRouteCell extends ListCell<AirplaneRoute> {
+        private HBox contentBox = new HBox();
+        private Label routeInfoLabel = new Label();
+        private Button bookTicketButton = new Button("Beli Tiket");
+
+        public AirplaneRouteCell() {
+            HBox buttonBox = new HBox(bookTicketButton);
+            buttonBox.setAlignment(Pos.CENTER_LEFT);
+
+            VBox textInfoBox = new VBox(routeInfoLabel, buttonBox);
+            textInfoBox.setAlignment(Pos.CENTER_LEFT);
+            textInfoBox.setSpacing(5);
+
+            contentBox.getChildren().addAll(textInfoBox);
+            contentBox.setAlignment(Pos.CENTER_LEFT);
+            HBox.setHgrow(textInfoBox, Priority.ALWAYS);
+            setGraphic(contentBox);
+        }
+
+        @Override
+        protected void updateItem(AirplaneRoute airplaneRoute, boolean empty) {
+            super.updateItem(airplaneRoute, empty);
+            if (empty || airplaneRoute == null) {
+                setGraphic(null);
+            } else {
+                routeInfoLabel.setText("Rute: " + airplaneRoute.getSourceAirport() + " - " + airplaneRoute.getDestinationAirport());
+                bookTicketButton.setOnAction(e -> bookAirplaneTicket(airplaneRoute));
+                setGraphic(contentBox);
+            }
+        }
+
+        private void bookAirplaneTicket(AirplaneRoute airplaneRoute) {
+            List<String> paymentMethods = Arrays.asList("Credit Card", "Gopay", "OVO", "Dana");
+
+            ChoiceDialog<String> dialog = new ChoiceDialog<>(paymentMethods.get(0), paymentMethods);
+            dialog.setTitle("Pemesanan Tiket");
+            dialog.setHeaderText("Pesan Tiket untuk Rute: " + airplaneRoute.getSourceAirport() + " - " + airplaneRoute.getDestinationAirport());
+            dialog.setContentText("Pilih metode pembayaran:");
+
+            Optional<String> result = dialog.showAndWait();
+            result.ifPresent(selectedMetode -> {
+                showInvoice(airplaneRoute, selectedMetode);
+            });
+        }
+
+        private void showInvoice(AirplaneRoute airplaneRoute, String selectedMetode) {
+            Alert invoiceAlert = new Alert(Alert.AlertType.INFORMATION);
+            invoiceAlert.setTitle("Invoice Pembelian Tiket");
+            invoiceAlert.setHeaderText("Pemesanan Tiket Berhasil");
+            invoiceAlert.setContentText(
+                    "Rute: " + airplaneRoute.getSourceAirport() + " - " + airplaneRoute.getDestinationAirport() + "\n" +
+                            "Metode Pembayaran: " + selectedMetode
+            );
+            invoiceAlert.showAndWait();
+        }
+
+    }
 }

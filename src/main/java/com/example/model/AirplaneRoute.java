@@ -6,16 +6,16 @@ import java.util.List;
 public class AirplaneRoute {
     private String sourceAirport;
     private String destinationAirport;
-    private List<Airplane> availableAirplane;
+    private List<Airplane> availableAirplanes;
 
     public AirplaneRoute(String sourceAirport, String destinationAirport) {
         this.sourceAirport = sourceAirport;
         this.destinationAirport = destinationAirport;
-        this.availableAirplane = new ArrayList<>();
+        this.availableAirplanes = new ArrayList<>();
     }
 
     public void addAirplane(Airplane airplane) {
-        availableAirplane.add(airplane);
+        availableAirplanes.add(airplane);
     }
 
     public String getSourceAirport() {
@@ -34,11 +34,11 @@ public class AirplaneRoute {
         this.destinationAirport = destinationAirport;
     }
 
-    public List<Airplane> getAvailableAirplane() {
-        return availableAirplane;
+    public List<Airplane> getAvailableAirplanes() {
+        return availableAirplanes;
     }
 
-    public void setAvailableAirplane(List<Airplane> availableAirplane) {
-        this.availableAirplane = availableAirplane;
+    public void setAvailableAirplanes(List<Airplane> availableAirplanes) {
+        this.availableAirplanes = availableAirplanes;
     }
 }

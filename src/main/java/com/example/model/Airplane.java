@@ -9,8 +9,7 @@ public class Airplane {
     private String ticketPrice;
     private String airplaneClass;
 
-
-    public Airplane(String airplaneName,LocalTime originTime, LocalTime departureTime, String ticketPrice,String airplaneClass) {
+    public Airplane(String airplaneName, LocalTime originTime, LocalTime departureTime, String ticketPrice, String airplaneClass) {
         this.airplaneName = airplaneName;
         this.originTime = originTime;
         this.departureTime = departureTime;

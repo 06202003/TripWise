@@ -4,20 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AirplaneRouteSearch {
-    private List<AirplaneRoute> allAirplaneRoute;
+    private List<AirplaneRoute> allAirplaneRoutes;
 
     public AirplaneRouteSearch() {
-        allAirplaneRoute = new ArrayList<>();
+        allAirplaneRoutes = new ArrayList<>();
     }
 
-    public void addRouteA(AirplaneRoute airplaneRoute) {
-        allAirplaneRoute.add(airplaneRoute);
+    public void addRoute(AirplaneRoute airplaneRoute) {
+        allAirplaneRoutes.add(airplaneRoute);
     }
 
     public List<AirplaneRoute> searchRoutes(String source, String destination) {
         List<AirplaneRoute> matchingAirplaneRoutes = new ArrayList<>();
 
-        for (AirplaneRoute airplaneRoute : allAirplaneRoute) {
+        for (AirplaneRoute airplaneRoute : allAirplaneRoutes) {
             if (airplaneRoute.getSourceAirport().equals(source) && airplaneRoute.getDestinationAirport().equals(destination)) {
                 matchingAirplaneRoutes.add(airplaneRoute);
             }
@@ -26,4 +26,3 @@ public class AirplaneRouteSearch {
         return matchingAirplaneRoutes;
     }
 }
-

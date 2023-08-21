@@ -3,20 +3,39 @@ package com.example.model;
 import java.time.LocalTime;
 
 public class Train {
+    private String trainId;
     private String trainName;
-    private LocalTime departureTime;
+    private String departureTime;
 
-    private LocalTime originTime;
+    private String originTime;
 
     private String ticketPrice;
 
     private String trainClass;
 
-    public Train(String trainName,  LocalTime departureTime,LocalTime originTime, String ticketPrice) {
+    public Train(String trainId, String trainName, String departureTime, String originTime, String ticketPrice, String trainClass) {
+        this.trainId = trainId;
         this.trainName = trainName;
         this.departureTime = departureTime;
         this.originTime = originTime;
         this.ticketPrice = ticketPrice;
+        this.trainClass = trainClass;
+    }
+
+    public String getTrainId() {
+        return trainId;
+    }
+
+    public void setTrainId(String trainId) {
+        this.trainId = trainId;
+    }
+
+    public String getTrainClass() {
+        return trainClass;
+    }
+
+    public void setTrainClass(String trainClass) {
+        this.trainClass = trainClass;
     }
 
     public String getTrainName() {
@@ -27,11 +46,11 @@ public class Train {
         this.trainName = trainName;
     }
 
-    public LocalTime getDepartureTime() {
+    public String getDepartureTime() {
         return departureTime;
     }
 
-    public void setDepartureTime(LocalTime departureTime) {
+    public void setDepartureTime(String departureTime) {
         this.departureTime = departureTime;
     }
 
@@ -43,11 +62,11 @@ public class Train {
         this.ticketPrice = ticketPrice;
     }
 
-    public LocalTime getOriginTime() {
+    public String getOriginTime() {
         return originTime;
     }
 
-    public void setOriginTime(LocalTime originTime) {
+    public void setOriginTime(String originTime) {
         this.originTime = originTime;
     }
 }
