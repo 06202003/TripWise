@@ -5,26 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6153dcfc-6c72-4bb2-964a-25a1e7d39a50" name="Changes" comment="Tambah Event">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/DAO/CityDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/DAO/HotelDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/DAO/UserDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/DBUtil/DatabaseUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/model/City.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/model/modelEnum/StatusHotelEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/model/modelEnum/YesNoEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/DAO/OrdersDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/auth/UserSession.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Orders.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/auth/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/auth/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/DAO/CityDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/DAO/CityDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/DAO/HotelDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/DAO/HotelDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/DAO/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/DBUtil/DatabaseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/DBUtil/DatabaseUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/HotelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/HotelController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/PesanTiketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/PesanTiketController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/ProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/data/HotelData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Hotel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/PesanTiketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/modelEnum/StatusHotelEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/modelEnum/StatusHotelEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/modelEnum/YesNoEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/modelEnum/YesNoEnum.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/home.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,10 +42,10 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": -1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2TjdYbbfof9htLlptae60ouPAyA" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -61,12 +56,13 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Arthurito/OneDrive - Gadget Corp/Kuliah/Semester Antara/PT/TripWise&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Arthurito/OneDrive - Gadget Corp/Kuliah/Semester Antara/PT/TripWise/src/main/resources/com/example/demo/photos&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -76,6 +72,14 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Arthurito\OneDrive - Gadget Corp\Kuliah\Semester Antara\PT\TripWise\src\main\resources\com\example\demo\photos" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Arthurito\OneDrive - Gadget Corp\Kuliah\Semester Antara\PT\TripWise\src\main\resources\com\example\demo\photos" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.demo.main" />
@@ -125,7 +129,17 @@
       <workItem from="1692014338238" duration="22000" />
       <workItem from="1692079962499" duration="9000" />
       <workItem from="1692082551758" duration="2844000" />
-      <workItem from="1692091753999" duration="15006000" />
+      <workItem from="1692091753999" duration="16405000" />
+      <workItem from="1692146540574" duration="4761000" />
+      <workItem from="1692366503570" duration="10952000" />
+      <workItem from="1692500902996" duration="16962000" />
+      <workItem from="1692577872497" duration="13545000" />
+      <workItem from="1692719443990" duration="4534000" />
+      <workItem from="1692751940881" duration="340000" />
+      <workItem from="1692752439151" duration="1169000" />
+      <workItem from="1692753915329" duration="9885000" />
+      <workItem from="1692800910069" duration="5452000" />
+      <workItem from="1692855899809" duration="39000" />
     </task>
     <task id="LOCAL-00001" summary="LAST UTS">
       <option name="closed" value="true" />
@@ -158,6 +172,7 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="LAST UTS" />
     <MESSAGE value="Tambah Event" />
     <option name="LAST_COMMIT_MESSAGE" value="Tambah Event" />

@@ -1,6 +1,10 @@
 package com.example.controller;
 
+import com.example.DAO.CityDAO;
 import com.example.DAO.HotelDAO;
+import com.example.DAO.OrdersDAO;
+import com.example.DBUtil.DatabaseUtil;
+import com.example.auth.UserSession;
 import com.example.data.ConfirmationData;
 import com.example.model.Hotel;
 import javafx.collections.FXCollections;
@@ -8,40 +12,34 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+
+import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class HotelController {
     @FXML
+    public DatePicker checkInDatePicker;
+    @FXML
+    public DatePicker checkOutDatePicker;
+    @FXML
     private ComboBox<String> hotelComboBox;
     @FXML
     private ListView<VBox> hotelListView;
-    @FXML
-    private DatePicker checkInDatePicker;
-    @FXML
-    private DatePicker checkOutDatePicker;
-    @FXML
-    private TableView<Hotel> tableGuest;
-    @FXML
-    private Button searchButton;
-    private List<ConfirmationData> confirmationDataList = new ArrayList<>();
-    private static ObservableList<ConfirmationData> confirmedHotels = FXCollections.observableArrayList();
-    private static List<ArrayList<ConfirmationData>> confirmedHotelsList = new ArrayList<>();
 
     @FXML
     public void initialize() {
-        hotelComboBox.setOnAction(event -> {
-            String selectedHotel = hotelComboBox.getSelectionModel().getSelectedItem();
-            if (selectedHotel != null) {
-                System.out.println("Anda memilih Kota: " + selectedHotel);
-            }
-        });
-
-        hotelComboBox.getItems().addAll("Kota A", "Kota B", "Kota C");
-
+        ObservableList<String> cityNames = FXCollections.observableArrayList(new CityDAO().getAllCityNames());
+        hotelComboBox.setItems(cityNames);
     }
 
-    // Fungsi tambahan untuk mengkapitalisasi huruf pertama dari setiap kata
     private String capitalizeFirstLetter(String input) {
         String[] words = input.split("\\s+");
         StringBuilder result = new StringBuilder();
@@ -52,126 +50,117 @@ public class HotelController {
                 result.append(word.substring(1).toLowerCase()).append(" ");
             }
         }
-
         return result.toString().trim();
     }
+    public static String formatRupiah(BigDecimal value) {
+        DecimalFormat rupiahFormat = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+        DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
 
+        formatRp.setCurrencySymbol("Rp. ");
+        formatRp.setMonetaryDecimalSeparator(',');
+        formatRp.setGroupingSeparator('.');
+        rupiahFormat.setDecimalFormatSymbols(formatRp);
+
+        return rupiahFormat.format(value);
+    }
     @FXML
     private void searchHotels() {
         String selectedCity = hotelComboBox.getSelectionModel().getSelectedItem();
-//        List<Hotel> hotels = hotelData.getHotelsByCity(selectedCity);
+        if (selectedCity != null) {
+            int cityId = new CityDAO().getCityIdByName(selectedCity);
+            List<Hotel> hotels = new HotelDAO().getHotelsByCity(cityId);
 
-        // Bersihkan ListView dan tambahkan daftar hotel
-        hotelListView.getItems().clear();
-//        for (Hotel hotel : hotels) {
-//            String hotelInfo = "Nama Hotel = " + hotel.getNameHotel() + "\n" +
-//                    "Lokasi = " + hotel.getLocation() + "\n" +
-//                    "Tipe Kamar = " + capitalizeFirstLetter(hotel.getTipeRoom()) + "\n" +
-//                    "Max Capacity = " + capitalizeFirstLetter(hotel.getMaxCapacity()) + "\n" +
-//                    "Harga per Malam = " + capitalizeFirstLetter(hotel.getPrice()) + "\n" +
-//                    "Return Ticket = " + hotel.getReturnTicket().toLowerCase();
-//
-//            Button pesanButton = new Button("Pesan"); // Membuat tombol "Pesan"
-//            pesanButton.setOnAction(event -> {
-//                // Membuat jendela baru
-//                Stage pesanStage = new Stage();
-//                pesanStage.setTitle("Pesan Hotel: " + hotel.getNameHotel());
-//
-//                // Membuat komponen-komponen untuk jendela pesanan
-//                Label hotelInfoLabel = new Label(hotelInfo);
-//                // Mengambil tanggal check-in dan check-out dari objek Hotel
-//                String checkIn = hotel.getCheckIn();
-//                String checkOut = hotel.getCheckOut();
-//                Label checkInLabel = new Label("Tanggal Check-in: " + checkIn);
-//                Label checkOutLabel = new Label("Tanggal Check-out: " + checkOut);
-//
-//                String checkInDatePicker = hotel.getCheckIn();
-//                String checkOutDatePicker = hotel.getCheckOut();
-//
-//                ComboBox<String> metodePembayaranComboBox = new ComboBox<>();
-//                metodePembayaranComboBox.getItems().addAll("Kartu Kredit", "Transfer Bank", "OVO", "GoPay", "Cash");
-//
-//                Button konfirmasiButton = new Button("Konfirmasi");
-//
-//                konfirmasiButton.setOnAction(confirmEvent -> {
-//                    // Kode untuk menangani konfirmasi pesanan dan metode pembayaran
-//                    System.out.println(" ");
-//                    String selectedMetode = metodePembayaranComboBox.getValue();
-////                    System.out.println("Pesanan untuk hotel " + hotel.getNameHotel() + " dikonfirmasi.");
-////                    System.out.println("Metode Pembayaran: " + selectedMetode);
-////                    System.out.println("Tanggal Check-in: " + checkInDatePicker);
-////                    System.out.println("Tanggal Check-out: " + checkOutDatePicker);
-////                    System.out.println(" ");
-//
-//                    Alert confirmationAlert = new Alert(Alert.AlertType.INFORMATION);
-//                    confirmationAlert.setTitle("Confirmation Details");
-//                    confirmationAlert.setHeaderText("Booking Confirmation for " + hotel.getNameHotel());
-//                    confirmationAlert.setContentText(
-//                            "Metode Pembayaran: " + selectedMetode + "\n" +
-//                                    "Tanggal Check-in: " + checkInDatePicker + "\n" +
-//                                    "Tanggal Check-out: " + checkOutDatePicker
-//                    );
-//
-//                    // Show the alert and wait for the user's response
-//                    confirmationAlert.showAndWait();
-//
-//                    ConfirmationData data = new ConfirmationData(hotel.getNameHotel(), selectedMetode, checkInDatePicker, checkOutDatePicker);
-//
-//                    int hotelIndex = hotels.indexOf(hotel);
-//                    if (hotelIndex < confirmedHotelsList.size()) {
-//                        confirmedHotelsList.get(hotelIndex).add(data);
-//                    } else {
-//                        ArrayList<ConfirmationData> newHotelList = new ArrayList<>();
-//                        newHotelList.add(data);
-//                        confirmedHotelsList.add(newHotelList);
-//                    }
-//                    System.out.println(confirmedHotelsList);
-//
-//// Menggunakan model untuk menambah data ke confirmedHotelsList pada model
-//                    ConfirmationModel.addConfirmedHotel(confirmedHotelsList.get(hotelIndex));
-//
-//                    confirmationDataList.add(data);
-//                    confirmedHotels.add(data);
-//
-//// Print the confirmed hotel data to console
-////                    printConfirmedHotels();
-//
-//                    // Cetak ConfirmationData ke konsol
-////                    System.out.println(data.toString());
-//                    pesanStage.close(); // Menutup jendela setelah konfirmasi
-//                });
-//
-//                // Mengatur tata letak komponen-komponen dalam jendela
-//                VBox pesanLayout = new VBox(10);
-//                pesanLayout.getChildren().addAll(hotelInfoLabel, checkInLabel, checkOutLabel, metodePembayaranComboBox, konfirmasiButton);
-//                pesanLayout.setAlignment(Pos.CENTER);
-//                Scene pesanScene = new Scene(pesanLayout, 300, 300);
-//
-//                pesanStage.setScene(pesanScene);
-//                pesanStage.show();
-//            });
-//
-//            VBox hotelInfoBox = new VBox(); // Membuat container vertikal untuk informasi hotel
-//            hotelInfoBox.getChildren().addAll(
-//                    new Label(hotelInfo),
-//                    pesanButton
-//            );
-//            hotelListView.getItems().add(hotelInfoBox);
-//        }
-    }
-    public static List<ArrayList<ConfirmationData>> getConfirmedHotelsList() {
-        return confirmedHotelsList;
-    }
-
-    public void printConfirmedHotelsList() {
-        System.out.println("Confirmed Hotel Data List:");
-        for (ArrayList<ConfirmationData> hotelList : confirmedHotelsList) {
-            System.out.println(hotelList.toString());
+            hotelListView.getItems().clear();
+            for (Hotel hotel : hotels) {
+                String hotelInfo =
+                        "Nama Hotel: " + hotel.getHotelName() + "\n" +
+                        "Tipe Kamar: " + hotel.getTipeRoom() + "\n" +
+                        "Return Ticket " + hotel.getReturnTicket() + "\n" +
+                        "Kapasitas Maksimal: " + hotel.getMaxCapacity() + "\n" +
+                        "Harga per Malam: " + formatRupiah(hotel.getPrice()) + "\n" +
+                        "Status: " + hotel.getStatus() + "\n" +
+                        "Kamar Yang Tersedia: " + hotel.getRemainingRoom();
+                VBox hotelInfoBox = new VBox();
+                hotelInfoBox.getChildren().addAll(
+                        new Label(hotelInfo),
+                        createConfirmationButton(hotel)
+                );
+                hotelListView.getItems().add(hotelInfoBox);
+            }
         }
     }
 
-    public void updateHotelList(ObservableList<String> updatedHotels) {
-        hotelComboBox.setItems(updatedHotels);
+    private Button createConfirmationButton(Hotel hotel) {
+        Button confirmationButton = new Button("Pesan");
+        confirmationButton.setOnAction(event -> {
+            String confirmationMessage = "Hotel: " + hotel.getHotelName() + "\n" +
+                    "Tipe Room: " + hotel.getTipeRoom() + "\n" +
+                    "getLocation: " + hotel.getLocation() + "\n" +
+                    "getRemainingRoom: " + hotel.getRemainingRoom() + "\n" +
+                    "getStatus: " + hotel.getStatus() + "\n" +
+                    "getReturnTicket: " + hotel.getReturnTicket() + "\n" +
+                    "getCityId: " + hotel.getCityId() + "\n" +
+                    "getCity: " + hotel.getCity() + "\n" +
+                    "getMaxCapacity: " + hotel.getMaxCapacity() + "\n" +
+                    "getId: " + hotel.getId() + "\n" +
+                    "Harga per Malam: " + formatRupiah(hotel.getPrice());
+
+            Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmationAlert.setTitle("Confirmation");
+            confirmationAlert.setHeaderText(null);
+            confirmationAlert.setContentText(confirmationMessage);
+
+            ButtonType buttonTypeConfirm = new ButtonType("Confirm");
+            ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+            confirmationAlert.getButtonTypes().setAll(buttonTypeConfirm, buttonTypeCancel);
+
+            confirmationAlert.showAndWait().ifPresent(response -> {
+                if (response == buttonTypeConfirm) {
+                    LocalDate checkInDate = checkInDatePicker.getValue();
+                    LocalDate checkOutDate = checkOutDatePicker.getValue();
+                    int userId = UserSession.getInstance().getLoggedInUser().getId(); // Get the logged-in user ID
+                    int hotelId = hotel.getId();
+                    int cityId = hotel.getCityId();
+
+                    insertOrder(userId, hotelId, cityId, checkInDate, checkOutDate);
+                    Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                    successAlert.setTitle("Success");
+                    successAlert.setHeaderText(null);
+                    successAlert.setContentText("Booking confirmed!");
+                    successAlert.showAndWait();
+                }
+            });
+        });
+
+        return confirmationButton;
     }
+
+
+    private void insertOrder(int userId, int hotelId, int cityId, LocalDate checkInDate, LocalDate checkOutDate) {
+        String sql = "INSERT INTO `orders` (user_id, hotel_id, city_id, check_in_date, check_out_date) VALUES (?, ?, ?, ?, ?)";
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, userId);
+            stmt.setInt(2, hotelId);
+            stmt.setInt(3, cityId);
+            stmt.setObject(4, checkInDate);
+            stmt.setObject(5, checkOutDate);
+
+            conn.setAutoCommit(false); // Start transaction
+            stmt.executeUpdate();
+            conn.commit(); // Commit transaction
+
+            // After inserting, renumber the order IDs
+            OrdersDAO ordersDAO = new OrdersDAO();
+            ordersDAO.renumberOrderIDs();
+
+        } catch (SQLException e) {
+            System.err.println("Failed to insert order into the database.");
+            e.printStackTrace();
+        }
+    }
+
+
 
 }

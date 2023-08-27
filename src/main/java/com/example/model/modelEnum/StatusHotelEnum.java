@@ -14,4 +14,13 @@ public enum StatusHotelEnum {
     public String getValue() {
         return value;
     }
+
+    public static StatusHotelEnum fromValue(String value) {
+        for (StatusHotelEnum a : values()) {
+            if (a.getValue().equalsIgnoreCase(value)) {
+                return a;
+            }
+        }
+        throw new IllegalArgumentException("No enum constant found for value: " + value);
+    }
 }

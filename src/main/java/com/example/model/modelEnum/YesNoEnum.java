@@ -13,6 +13,13 @@ public enum YesNoEnum {
     public String getValue() {
         return value;
     }
+
+    public static YesNoEnum fromValue(String value) {
+        for (YesNoEnum yesNo : values()) {
+            if (yesNo.getValue().equalsIgnoreCase(value)) {
+                return yesNo;
+            }
+        }
+        throw new IllegalArgumentException("No enum constant found for value: " + value);
+    }
 }
-
-
