@@ -3,8 +3,6 @@ package com.example.controller;
 import com.example.DAO.OrdersDAO;
 import com.example.DAO.UserDAO;
 import com.example.auth.UserSession;
-import com.example.data.ConfirmationData;
-import com.example.data.ConfirmationModel;
 import com.example.model.Orders;
 import com.example.model.User;
 import javafx.event.ActionEvent;
@@ -25,7 +23,6 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class HomeController {
@@ -63,8 +60,6 @@ public class HomeController {
     private User updatedUser;
     private UserDAO userDAO = new UserDAO();
     public void initialize() {
-        List<ArrayList<ConfirmationData>> receivedData = ConfirmationModel.getConfirmedHotelsList();
-        receiveConfirmedHotelsList(receivedData);
         confirmedHotelsListView.refresh();
 
         User loggedInUser = UserSession.getInstance().getLoggedInUser();
@@ -89,7 +84,6 @@ public class HomeController {
                 System.out.println("No file selected.");
             }
         });
-
     }
 
     private void displayConfirmedHotels() {
@@ -225,21 +219,6 @@ public class HomeController {
         extractUserData(user);
     }
 
-    public void receiveConfirmedHotelsList(List<ArrayList<ConfirmationData>> data) {
-        confirmedHotelsListView.getItems().clear();
-
-        for (ArrayList<ConfirmationData> hotelDataList : data) {
-            VBox hotelInfoBox = new VBox();
-            for (ConfirmationData hotelData : hotelDataList) {
-                Label nameLabel = new Label("Hotel Name: " + hotelData.getHotelName());
-                Button detailsButton = new Button("Details");
-                hotelInfoBox.getChildren().addAll(nameLabel, detailsButton);
-            }
-            confirmedHotelsListView.getItems().add(hotelInfoBox);
-            confirmedHotelsListView.refresh();
-        }
-    }
-
     @FXML
     private void openFlightSearch() {
         openWindow("/com/example/demo/flight.fxml");
@@ -260,15 +239,25 @@ public class HomeController {
         openWindow("/com/example/demo/event.fxml");
     }
 
+
     private void openWindow(String resourcePath) {
         try {
+            Stage currentStage = (Stage) userUsername.getScene().getWindow();
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource(resourcePath));
             Parent root = loader.load();
-            Stage dashboardStage = new Stage();
-            dashboardStage.setScene(new Scene(root));
-            dashboardStage.show();
+            Stage newWindowStage = new Stage();
+            newWindowStage.setScene(new Scene(root));
+
+            currentStage.close();
+            newWindowStage.setOnCloseRequest(event -> {
+                currentStage.show();
+            });
+
+            newWindowStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 }

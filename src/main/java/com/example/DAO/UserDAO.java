@@ -3,6 +3,7 @@ package com.example.DAO;
 import com.example.DBUtil.DatabaseUtil;
 import com.example.model.Hotel;
 import com.example.model.User;
+import javafx.scene.text.Text;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -79,4 +80,39 @@ public class UserDAO {
             return false;
         }
     }
+
+    public User authenticateUser(String username, String password) {
+        User user = null;
+
+        String query = "SELECT * FROM user WHERE username = ? AND password = ?";
+        try (Connection connection = DatabaseUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, username);
+            statement.setString(2, password);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    Integer userId = resultSet.getInt("id");
+                    String userFullName = resultSet.getString("name");
+                    Date userBirthDate = resultSet.getDate("birthDate");
+                    String userAddress = resultSet.getString("address");
+                    String userPhoneNum = resultSet.getString("phoneNumber");
+                    String userUsername = resultSet.getString("username");
+                    String userPassword = resultSet.getString("password");
+                    String userNik = resultSet.getString("nik");
+                    String userEmail = resultSet.getString("email");
+                    String userProfilePic = resultSet.getString("profilePicture");
+
+                    user = new User(userId, userFullName, userBirthDate, userAddress, userPhoneNum, userUsername, userPassword, userNik, userEmail, userProfilePic);
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return user;
+    }
+
 }

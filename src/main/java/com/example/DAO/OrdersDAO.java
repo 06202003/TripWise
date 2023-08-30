@@ -4,6 +4,7 @@ import com.example.DBUtil.DatabaseUtil;
 import com.example.model.Orders;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,6 +79,28 @@ public class OrdersDAO {
         }
     }
 
+    public void insertOrder(int userId, int hotelId, int cityId, LocalDate checkInDate, LocalDate checkOutDate) {
+        String sql = "INSERT INTO `orders` (user_id, hotel_id, city_id, check_in_date, check_out_date) VALUES (?, ?, ?, ?, ?)";
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
+            stmt.setInt(1, userId);
+            stmt.setInt(2, hotelId);
+            stmt.setInt(3, cityId);
+            stmt.setObject(4, checkInDate);
+            stmt.setObject(5, checkOutDate);
+
+            conn.setAutoCommit(false);
+            stmt.executeUpdate();
+            conn.commit();
+
+            OrdersDAO ordersDAO = new OrdersDAO();
+            ordersDAO.renumberOrderIDs();
+
+        } catch (SQLException e) {
+            System.err.println("Failed to insert order into the database.");
+            e.printStackTrace();
+        }
+    }
 
 }

@@ -3,25 +3,22 @@ package com.example.controller;
 import com.example.DAO.CityDAO;
 import com.example.DAO.HotelDAO;
 import com.example.DAO.OrdersDAO;
-import com.example.DBUtil.DatabaseUtil;
 import com.example.auth.UserSession;
-import com.example.data.ConfirmationData;
 import com.example.model.Hotel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
-
+import javafx.stage.Stage;
+import java.io.IOException;
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class HotelController {
@@ -40,18 +37,19 @@ public class HotelController {
         hotelComboBox.setItems(cityNames);
     }
 
-    private String capitalizeFirstLetter(String input) {
-        String[] words = input.split("\\s+");
-        StringBuilder result = new StringBuilder();
+//    private String capitalizeFirstLetter(String input) {
+//        String[] words = input.split("\\s+");
+//        StringBuilder result = new StringBuilder();
+//
+//        for (String word : words) {
+//            if (word.length() > 0) {
+//                result.append(Character.toUpperCase(word.charAt(0)));
+//                result.append(word.substring(1).toLowerCase()).append(" ");
+//            }
+//        }
+//        return result.toString().trim();
+//    }
 
-        for (String word : words) {
-            if (word.length() > 0) {
-                result.append(Character.toUpperCase(word.charAt(0)));
-                result.append(word.substring(1).toLowerCase()).append(" ");
-            }
-        }
-        return result.toString().trim();
-    }
     public static String formatRupiah(BigDecimal value) {
         DecimalFormat rupiahFormat = (DecimalFormat) DecimalFormat.getCurrencyInstance();
         DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
@@ -63,6 +61,7 @@ public class HotelController {
 
         return rupiahFormat.format(value);
     }
+
     @FXML
     private void searchHotels() {
         String selectedCity = hotelComboBox.getSelectionModel().getSelectedItem();
@@ -122,45 +121,28 @@ public class HotelController {
                     int hotelId = hotel.getId();
                     int cityId = hotel.getCityId();
 
-                    insertOrder(userId, hotelId, cityId, checkInDate, checkOutDate);
+                    OrdersDAO ordersDAO = new OrdersDAO();
+                    ordersDAO.insertOrder(userId, hotelId, cityId, checkInDate, checkOutDate);
+
                     Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
                     successAlert.setTitle("Success");
                     successAlert.setHeaderText(null);
                     successAlert.setContentText("Booking confirmed!");
                     successAlert.showAndWait();
+
+                    try {
+                        Stage currentStage = (Stage) hotelComboBox.getScene().getWindow();
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/home.fxml"));
+                        Parent root = loader.load();
+                        Scene scene = new Scene(root);
+                        currentStage.setScene(scene);
+                        currentStage.show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
         });
-
         return confirmationButton;
     }
-
-
-    private void insertOrder(int userId, int hotelId, int cityId, LocalDate checkInDate, LocalDate checkOutDate) {
-        String sql = "INSERT INTO `orders` (user_id, hotel_id, city_id, check_in_date, check_out_date) VALUES (?, ?, ?, ?, ?)";
-        try (Connection conn = DatabaseUtil.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setInt(1, userId);
-            stmt.setInt(2, hotelId);
-            stmt.setInt(3, cityId);
-            stmt.setObject(4, checkInDate);
-            stmt.setObject(5, checkOutDate);
-
-            conn.setAutoCommit(false); // Start transaction
-            stmt.executeUpdate();
-            conn.commit(); // Commit transaction
-
-            // After inserting, renumber the order IDs
-            OrdersDAO ordersDAO = new OrdersDAO();
-            ordersDAO.renumberOrderIDs();
-
-        } catch (SQLException e) {
-            System.err.println("Failed to insert order into the database.");
-            e.printStackTrace();
-        }
-    }
-
-
-
 }

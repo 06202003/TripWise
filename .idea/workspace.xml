@@ -5,22 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6153dcfc-6c72-4bb2-964a-25a1e7d39a50" name="Changes" comment="Tambah Event">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/DAO/OrdersDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/auth/UserSession.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Orders.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/DAO/CityDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/DAO/CityDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/DAO/HotelDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/DAO/HotelDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/DAO/OrdersDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/DAO/OrdersDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/DAO/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/DBUtil/DatabaseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/DBUtil/DatabaseUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/auth/LoginService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/HotelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/HotelController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/PesanTiketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/modelEnum/StatusHotelEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/modelEnum/StatusHotelEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/modelEnum/YesNoEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/modelEnum/YesNoEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/ProfileController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/data/ConfirmationData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/data/ConfirmationModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/event.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/event.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,24 +49,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Arthurito/OneDrive - Gadget Corp/Kuliah/Semester Antara/PT/TripWise/src/main/resources/com/example/demo/photos&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Arthur",
+    "last_opened_file_path": "C:/Users/Arthurito/OneDrive - Gadget Corp/Kuliah/Semester Antara/PDPL",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.propCompiler",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Arthurito\OneDrive - Gadget Corp\Kuliah\Semester Antara\PT\TripWise\src\main\resources\com\example\demo\photos" />
@@ -140,6 +135,11 @@
       <workItem from="1692753915329" duration="9885000" />
       <workItem from="1692800910069" duration="5452000" />
       <workItem from="1692855899809" duration="39000" />
+      <workItem from="1693144552446" duration="81000" />
+      <workItem from="1693183752912" duration="6343000" />
+      <workItem from="1693211474671" duration="1000" />
+      <workItem from="1693212102587" duration="2000" />
+      <workItem from="1693284042405" duration="99000" />
     </task>
     <task id="LOCAL-00001" summary="LAST UTS">
       <option name="closed" value="true" />
