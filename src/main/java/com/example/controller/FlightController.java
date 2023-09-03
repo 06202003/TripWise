@@ -19,6 +19,7 @@ import java.util.Optional;
 
 public class FlightController {
 
+
     @FXML
     private ComboBox<String> originComboBox1;
 
@@ -62,14 +63,14 @@ public class FlightController {
 
     private class AirplaneRouteCell extends ListCell<AirplaneRoute> {
         private HBox contentBox = new HBox();
-        private Label routeInfoLabel = new Label();
+        private Label airplaneNameLabel = new Label();
         private Button bookTicketButton = new Button("Beli Tiket");
 
         public AirplaneRouteCell() {
             HBox buttonBox = new HBox(bookTicketButton);
             buttonBox.setAlignment(Pos.CENTER_LEFT);
 
-            VBox textInfoBox = new VBox(routeInfoLabel, buttonBox);
+            VBox textInfoBox = new VBox(airplaneNameLabel, buttonBox);
             textInfoBox.setAlignment(Pos.CENTER_LEFT);
             textInfoBox.setSpacing(5);
 
@@ -85,11 +86,23 @@ public class FlightController {
             if (empty || airplaneRoute == null) {
                 setGraphic(null);
             } else {
-                routeInfoLabel.setText("Rute: " + airplaneRoute.getSourceAirport() + " - " + airplaneRoute.getDestinationAirport());
+                // Assuming that the first available airplane is chosen to represent the route
+                if (!airplaneRoute.getAvailableAirplanes().isEmpty()) {
+                    Airplane airplane = airplaneRoute.getAvailableAirplanes().get(0);
+                    String airplaneInfo = "Pesawat: " + airplane.getAirplaneName() +
+                            "\nHarga Tiket: " + airplane.getTicketPrice() +
+                            "\nJam Keberangkatan: " + airplane.getDepartureTime() +
+                            "\nKelas: " + airplane.getAirplaneClass();
+                    airplaneNameLabel.setText(airplaneInfo);
+                } else {
+                    airplaneNameLabel.setText("Tidak Ada Pesawat Tersedia");
+                }
+
                 bookTicketButton.setOnAction(e -> bookAirplaneTicket(airplaneRoute));
                 setGraphic(contentBox);
             }
         }
+
 
         private void bookAirplaneTicket(AirplaneRoute airplaneRoute) {
             List<String> paymentMethods = Arrays.asList("Credit Card", "Gopay", "OVO", "Dana");
@@ -106,15 +119,29 @@ public class FlightController {
         }
 
         private void showInvoice(AirplaneRoute airplaneRoute, String selectedMetode) {
-            Alert invoiceAlert = new Alert(Alert.AlertType.INFORMATION);
-            invoiceAlert.setTitle("Invoice Pembelian Tiket");
-            invoiceAlert.setHeaderText("Pemesanan Tiket Berhasil");
-            invoiceAlert.setContentText(
-                    "Rute: " + airplaneRoute.getSourceAirport() + " - " + airplaneRoute.getDestinationAirport() + "\n" +
-                            "Metode Pembayaran: " + selectedMetode
-            );
-            invoiceAlert.showAndWait();
+            // Assuming that the first available airplane is chosen to represent the route
+            if (!airplaneRoute.getAvailableAirplanes().isEmpty()) {
+                Airplane airplane = airplaneRoute.getAvailableAirplanes().get(0);
+
+                Alert invoiceAlert = new Alert(Alert.AlertType.INFORMATION);
+                invoiceAlert.setTitle("Invoice Pembelian Tiket");
+                invoiceAlert.setHeaderText("Pemesanan Tiket Berhasil");
+                invoiceAlert.setContentText(
+                        "Pesawat: " + airplane.getAirplaneName() + "\n" +
+                                "Kelas Pesawat: " + airplane.getAirplaneClass() + "\n" +
+                                "Rute: " + airplaneRoute.getSourceAirport() + " - " + airplaneRoute.getDestinationAirport() + "\n" +
+                                "Metode Pembayaran: " + selectedMetode
+                );
+                invoiceAlert.showAndWait();
+            } else {
+                // No airplanes available
+                Alert noAirplanesAlert = new Alert(Alert.AlertType.WARNING);
+                noAirplanesAlert.setTitle("Tidak Ada Pesawat Tersedia");
+                noAirplanesAlert.setHeaderText("Maaf, tidak ada pesawat yang tersedia untuk rute ini.");
+                noAirplanesAlert.showAndWait();
+            }
         }
 
     }
+
 }

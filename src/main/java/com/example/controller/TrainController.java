@@ -8,6 +8,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -62,29 +64,38 @@ public class TrainController {
                     setText(null);
                     setGraphic(null);
                 } else {
-                    String trainInfo = trainRoute.getDestinationStation();
-                    setText(trainInfo);
+                    Train train = trainRoute.getAvailableTrains().get(0);
+
+                    String trainInfo = "Kereta: " + train.getTrainName() +
+                            "\nJam Keberangkatan: " + train.getDepartureTime() +
+                            "\nHarga Tiket: " + train.getTicketPrice() +
+                            "\nKelas: " + train.getTrainClass();
+                    Label trainInfoLabel = new Label(trainInfo);
 
                     Button buyButton = new Button("Beli Tiket");
                     buyButton.setOnAction(event -> {
-                        String selectedMetode = showPaymentMethodDialog();
-                        if (selectedMetode != null) {
-                            bookTrainTicket(trainRoute, selectedMetode);
+                        String selectedMethod = showPaymentMethodDialog(trainRoute);
+                        if (selectedMethod != null) {
+                            bookTrainTicket(trainRoute, selectedMethod);
                         }
                     });
 
-                    setGraphic(buyButton);
+                    VBox contentBox = new VBox(trainInfoLabel, buyButton);
+                    contentBox.setSpacing(10);
+
+                    setGraphic(contentBox);
                 }
             }
         };
     }
 
-    private String showPaymentMethodDialog() {
+    private String showPaymentMethodDialog(TrainRoute trainRoute) {
         List<String> paymentMethods = Arrays.asList("Credit Card", "Gopay", "OVO", "Dana");
 
         ChoiceDialog<String> dialog = new ChoiceDialog<>(paymentMethods.get(0), paymentMethods);
         dialog.setTitle("Pemesanan Tiket Kereta");
-        dialog.setHeaderText("Pilih metode pembayaran:");
+        dialog.setHeaderText("Pesan Tiket untuk Rute: " + trainRoute.getSourceStation() + " - " + trainRoute.getDestinationStation());
+        dialog.setContentText("Pilih metode pembayaran:");
 
         Optional<String> result = dialog.showAndWait();
         return result.orElse(null);

@@ -15,6 +15,19 @@ public class User {
     private String email;
     private String profilePicture;
 
+    public User(int id, String name, Date birthDate, String address, String phoneNumber, String username, String password, String nik, String email, String profilePicture) {
+        this.id = id;
+        this.name = name;
+        this.birthDate = birthDate;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.username = username;
+        this.password = password;
+        this.nik = nik;
+        this.email = email;
+        this.profilePicture = profilePicture;
+    }
+
     public String getProfilePicture() {
         return profilePicture;
     }

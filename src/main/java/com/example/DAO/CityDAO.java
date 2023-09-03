@@ -39,4 +39,34 @@ public class CityDAO {
             System.out.println("Nama Negara : " + city.getCountryName());
         }
     }
+
+    public List<String> getAllCityNames() {
+        List<String> cityNames = new ArrayList<>();
+        try (Connection conn = DatabaseUtil.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT cityName FROM city")) {
+
+            while (rs.next()) {
+                cityNames.add(rs.getString("cityName"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return cityNames;
+    }
+
+    public int getCityIdByName(String cityName) {
+        int cityId = -1;
+        try (Connection conn = DatabaseUtil.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT id FROM city WHERE cityName = '" + cityName + "'")) {
+
+            if (rs.next()) {
+                cityId = rs.getInt("id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return cityId;
+    }
 }

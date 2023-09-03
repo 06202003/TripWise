@@ -1,7 +1,8 @@
 package com.example.controller;
+import com.example.DAO.UserDAO;
 import com.example.DBUtil.DatabaseUtil;
+import com.example.auth.UserSession;
 import com.example.model.User;
-import com.example.auth.LoginService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,7 +18,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 
 
 public class LoginController {
@@ -30,107 +30,36 @@ public class LoginController {
     @FXML
     private Button loginButton;
 
-    private Stage stage;
-
-//    public void setStage(Stage stage) {
-//        this.stage = stage;
-//    }
-
     @FXML
     public void handleLoginButtonAction() {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        try (Connection connection = DatabaseUtil.getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM user WHERE username = ? AND password = ?")) {
+        UserDAO userDAO = new UserDAO();
+        User user = userDAO.authenticateUser(username, password);
 
-            statement.setString(1, username);
-            statement.setString(2, password);
+        if (user != null) {
+            UserSession.getInstance().setLoggedInUser(user);
+            System.out.println("Login successful! Welcome, " + user.getName());
 
-            try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next()) {
-                    User loggedInUser = new User();
-                    String userFullName = resultSet.getString("name");
-                    System.out.println("Login successful! Welcome, " + userFullName);
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/home.fxml"));
+                Parent root = loader.load();
+                Stage homeStage = new Stage();
+                homeStage.setScene(new Scene(root));
+                homeStage.show();
 
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/home.fxml"));
-                    Parent root = loader.load();
-
-//                    PesanTiketController pesanTiketController = loader.getController();
-//                    homeController.setLoggedInUser(user); /
-
-                    PesanTiketController otherController = loader.getController();
-                    otherController.setLoggedInUser(userFullName); // Pass the user name
-
-                    Stage homeStage = new Stage();
-                    homeStage.setScene(new Scene(root));
-                    homeStage.show();
-
-                    // Close the Login stage
-                    Stage loginStage = (Stage) loginButton.getScene().getWindow();
-                    loginStage.close();
-                } else {
-                    System.out.println("Invalid credentials.");
-                }
+                Stage loginStage = (Stage) loginButton.getScene().getWindow();
+                loginStage.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (SQLException | IOException e) {
-            e.printStackTrace();
+
+        } else {
+            System.out.println("Login gagal! Periksa kembali username dan password Anda.");
+            showAlert("Login gagal!", "Periksa kembali username dan password Anda.", Alert.AlertType.ERROR);
         }
-
-        Stage loginStage = (Stage) loginButton.getScene().getWindow();
-        loginStage.close();
     }
-
-//    @FXML
-//    public void handleLoginButtonAction() {
-//        String username = usernameField.getText();
-//        String password = passwordField.getText();
-//
-//        LoginService loginService = new LoginService();
-//        boolean isAuthenticated = loginService.authenticate(username, password);
-//
-//        if (isAuthenticated) {
-//
-//            System.out.println("Login berhasil!");
-//
-//            User user = loginService.getUserByUsername(username);
-//            System.out.println("Selamat datang, " + user.getName() + "!");
-//            System.out.println(user.getAddress());
-//            System.out.println(user.getBirthDate());
-//            System.out.println(user.getPhoneNumber());
-//
-//                try {
-//                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/demo/home.fxml"));
-//                    Parent dashboardRoot = fxmlLoader.load();
-////                    PesanTiketController dashboardController = fxmlLoader.getController();
-//
-//                    Stage dashboardStage = new Stage();
-//                    dashboardStage.setScene(new Scene(dashboardRoot));
-//
-//                    PesanTiketController dashboardController = fxmlLoader.getController();
-////                    dashboardController.setUser(user);
-//
-//                    dashboardController.setNameText(user.getName());
-//                    dashboardController.setNameText1(user.getName());
-//                    dashboardController.setAddressText(user.getAddress());
-//                    dashboardController.setPhoneText(user.getPhoneNumber());
-////                    dashboardController.setBirthText(user.getBirthDate());
-////                    dashboardController.setImageView(user.getProfilePicture());
-////                    dashboardController.setTanggalLahirText(user.getTanggalLahir());
-//
-//                    dashboardStage.show();
-//                    if (loginButton.getScene() != null) {
-//                        loginButton.getScene().getWindow().hide();
-//                    }
-//
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        } else {
-//            System.out.println("Login gagal! Periksa kembali username dan password Anda.");
-//            showAlert("Login gagal!", "Periksa kembali username dan password Anda.", Alert.AlertType.ERROR);
-//        }
-//    }
 
     @FXML
     private void showAlert(String title, String content, Alert.AlertType alertType) {
